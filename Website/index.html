@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saumya Kumar Das | Junior Programmer</title>
+
+  <style>
+    :root {
+      --navy: #0a1f44;
+      --navy-light: #132f63;
+      --accent: #4da3ff;
+      --bg: #f4f6fb;
+      --text: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 10px;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      color: var(--navy);
+      margin-bottom: 20px;
+      font-size: 2rem;
+      border-left: 6px solid var(--navy);
+      padding-left: 10px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .skill {
+      background: var(--navy-light);
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .projects a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="profile.jpg" alt="Saumya Kumar Das" class="profile-img">
+    <h1>Saumya Kumar Das</h1>
+    <p>Junior Programmer</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+        I am a computer programmer with strong knowledge of programming basics
+        and software development. I enjoy building applications, fixing bugs,
+        and learning new technologies. I am a quick learner, a good problem
+        solver, and can work both independently and in a team.
+      </p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="card">
+      <h3>Technical Assistant – SUBISU Cablenet Pvt. Ltd.</h3>
+      <p><em>June 2018 – February 2019 | Kathmandu</em></p>
+      <ul>
+        <li>Provided technical support via phone, email, and in person.</li>
+        <li>Coordinated with different departments as required.</li>
+        <li>Analyzed network information and performed troubleshooting.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+
+    <div class="card">
+      <h3>Bank Management System & Travel Management System</h3>
+      <p><em>Java Swing</em></p>
+      <ul>
+        <li>Worked with core Java concepts (OOP, inheritance, polymorphism).</li>
+        <li>Built GUI using Swing components and event handling.</li>
+        <li>Implemented form validation and JDBC with MySQL.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>E-Commerce App & Weather App</h3>
+      <p><em>Flutter Framework</em></p>
+      <ul>
+        <li>Implemented secure login and user profiles.</li>
+        <li>Created product listings, search, filters, and cart system.</li>
+        <li>Integrated APIs and modeled JSON data using Dart.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p>
+        GitHub:
+        <a href="https://github.com/SaumyaKumarDas" target="_blank">
+          github.com/SaumyaKumarDas
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">Java Programming</div>
+      <div class="skill">HTML & CSS</div>
+      <div class="skill">Python Programming</div>
+      <div class="skill">Dart Programming</div>
+      <div class="skill">Flutter Framework</div>
+      <div class="skill">Computer Programming Basics</div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="card">
+      <h3>Bachelor in Information Technology</h3>
+      <p>Phoenix College of Management</p>
+      <p><em>November 2024 – Present | Kathmandu</em></p>
+    </div>
+
+    <div class="card">
+      <h3>Diploma in Flutter Framework</h3>
+      <p>Broadway Infosys</p>
+      <p><em>January 2026 – April 2026</em></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Email: <strong>dassaumya13@gmail.com</strong></p>
+      <p>Location: Kathmandu, Nepal</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Saumya Kumar Das | Junior Programmer</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
