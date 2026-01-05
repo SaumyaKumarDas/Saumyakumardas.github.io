@@ -146,7 +146,7 @@
       transform: translateY(0);
     }
 
-    /* ✅ ONLY FIX — MOBILE */
+    /* Responsive fix for small screens */
     @media (max-width: 600px) {
       .profile-pic {
         width: 70px;
@@ -155,9 +155,12 @@
         left: 15px;
       }
 
+      header {
+        padding-top: 110px; /* ✅ ONLY FIX: prevents overlap */
+      }
+
       header h1 {
         font-size: 2rem;
-        margin-top: 90px; /* prevents overlap */
       }
     }
   </style>
@@ -180,7 +183,73 @@
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- rest of your content unchanged -->
+<section id="about" class="fade-in">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      I am a motivated junior programmer with strong fundamentals in software development.
+      I have experience in Flutter, Java, HTML/CSS, and database connectivity.
+      I enjoy learning new technologies and building real-world applications.
+      I can work independently as well as in a team.
+    </p>
+  </div>
+</section>
+
+<section id="skills" class="fade-in">
+  <h2>Technical Skills</h2>
+  <div class="card skills">
+    <span>Flutter</span>
+    <span>Dart</span>
+    <span>Java</span>
+    <span>Java Swing</span>
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JDBC</span>
+    <span>MySQL</span>
+    <span>API Integration</span>
+    <span>Git & GitHub</span>
+  </div>
+</section>
+
+<section id="experience" class="fade-in">
+  <h2>Work Experience</h2>
+  <div class="card">
+    <h3>Technical Assistant – Subisu Cablenet Pvt. Ltd.</h3>
+    <p><strong>April 2018 – February 2019</strong></p>
+    <ul>
+      <li>Customer and enterprise technical support</li>
+      <li>Network troubleshooting and coordination</li>
+      <li>Handled phone, email, and in-person inquiries</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="fade-in contact">
+  <h2>Contact</h2>
+  <div class="card">
+    <p><strong>Email:</strong> saumyakumar.das1124@pcmgmt.edu.np</p>
+    <p><strong>Phone:</strong> 9804740881</p>
+    <p><strong>Location:</strong> Kathmandu, Nepal</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Saumya Kumar Das | Portfolio Website</p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll(".fade-in");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
