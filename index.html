@@ -50,25 +50,6 @@
         }
         .cv-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
 
-        /* --- EMAIL BUTTON OPTIMIZATION --- */
-        .email-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-main);
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            backdrop-filter: blur(4px);
-        }
-        .email-btn:hover {
-            background: rgba(56, 189, 248, 0.05);
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
         /* --- HERO --- */
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center;
@@ -285,7 +266,7 @@
         <p style="color:var(--text-dim); margin: 1.5rem 0;">Kathmandu, Nepal | +977-9804740881</p>
         
         <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-            <button class="email-btn" onclick="copyEmail()">Email : saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-copy"></i></button>
+            <button class="cv-btn" style="background: var(--accent); color: var(--bg);" onclick="copyEmail()">Email : saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-copy"></i></button>
         </div>
 
         <div style="margin-top: 3rem; font-size: 2rem;">
