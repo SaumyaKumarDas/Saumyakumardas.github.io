@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Saumya Kumar Das | Flutter & Java Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Saumya Kumar Das, a Junior Programmer specializing in Flutter, Java, and MySQL. Discover mobile and desktop projects.">
+    <meta name="description" content="Portfolio of Saumya Kumar Das, a Junior Programmer specializing in Flutter, Java, and MySQL. Based in Kathmandu.">
     <meta property="og:title" content="Saumya Kumar Das | Developer Portfolio">
-    <meta property="og:description" content="Specializing in Flutter Apps and Java Systems. Based in Kathmandu.">
+    <meta property="og:description" content="Specializing in Flutter Apps and Java Systems. View my latest projects.">
     <meta property="og:image" content="Saumya.jpg">
     <meta property="og:url" content="https://github.com/saumyakumardas">
 
@@ -31,24 +31,24 @@
             color: var(--text-main); 
             font-family: 'Inter', sans-serif; 
             line-height: 1.6;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* --- STICKY NAV --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; padding: 1.2rem 10%;
-            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px);
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; border-bottom: 1px solid var(--glass);
         }
-        .logo { font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.4rem; color: var(--accent); }
+        .logo { font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.4rem; color: var(--accent); text-decoration: none; }
         .nav-links a { text-decoration: none; color: var(--text-dim); margin-left: 2rem; font-weight: 500; transition: var(--transition); }
         .nav-links a:hover { color: var(--accent); }
         .cv-btn { 
             background: transparent; border: 1px solid var(--accent); color: var(--accent);
-            padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; transition: var(--transition);
+            padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: var(--transition);
         }
-        .cv-btn:hover { background: var(--accent); color: var(--bg); }
+        .cv-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
 
         /* --- HERO --- */
         .hero {
@@ -67,36 +67,39 @@
             50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
         }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
-        .typewriter { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 1.5rem; }
+        .typewriter { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 1.5rem; min-height: 1.6em; }
 
         /* --- BENTO SKILLS --- */
         .bento-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
-            padding: 4rem 0;
+            margin-top: 2rem;
         }
         .bento-item {
             background: var(--glass); border: 1px solid var(--glass);
-            padding: 2rem; border-radius: 20px; text-align: center;
-            transition: var(--transition);
+            padding: 2rem; border-radius: 20px; text-align: center; transition: var(--transition);
         }
-        .bento-item:hover { background: rgba(56, 189, 248, 0.05); border-color: var(--accent); transform: scale(1.02); }
+        .bento-item:hover { background: rgba(56, 189, 248, 0.08); border-color: var(--accent); transform: translateY(-5px); }
         .bento-item i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
         .item-tall { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
 
         /* --- PROJECTS --- */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .project-card {
             background: var(--card-bg); border-radius: 16px; overflow: hidden;
             border: 1px solid var(--glass); transition: var(--transition);
+            display: flex; flex-direction: column;
         }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .project-preview { height: 200px; background: #334155; display: flex; align-items: center; justify-content: center; }
-        .project-info { padding: 1.5rem; }
-        .project-tags { margin: 1rem 0; }
-        .tag { font-size: 0.7rem; background: var(--bg); color: var(--accent); padding: 4px 10px; border-radius: 4px; margin-right: 5px; }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--accent); }
+        .project-preview { height: 180px; background: #334155; display: flex; align-items: center; justify-content: center; position: relative; }
+        .project-info { padding: 1.5rem; flex-grow: 1; }
+        .project-tags { margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 5px; }
+        .tag { font-size: 0.7rem; background: var(--bg); color: var(--accent); padding: 4px 10px; border-radius: 4px; border: 1px solid var(--glass); }
+        .project-actions { display: flex; gap: 15px; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--glass); }
+        .project-actions a { text-decoration: none; color: var(--accent); font-size: 0.85rem; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 5px; }
+        .project-actions a:hover { color: var(--text-main); }
 
         /* --- TIMELINE --- */
-        .timeline { border-left: 2px solid var(--accent); margin-left: 20px; padding-left: 30px; position: relative; }
+        .timeline { border-left: 2px solid var(--accent); margin-left: 20px; padding-left: 30px; }
         .timeline-item { margin-bottom: 3rem; position: relative; }
         .timeline-item::before {
             content: ''; position: absolute; left: -41px; top: 0;
@@ -104,38 +107,41 @@
         }
 
         /* --- UTILITIES --- */
-        section { padding: 6rem 10%; opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+        section { padding: 8rem 10%; opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
         section.reveal { opacity: 1; transform: translateY(0); }
         .section-header { margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.5rem; border-bottom: 2px solid var(--accent); display: inline-block; }
+        .section-header h2 { font-size: 2.5rem; position: relative; padding-bottom: 10px; }
+        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: var(--accent); }
 
+        @media (max-width: 992px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            section { padding: 4rem 5%; }
             .hero h1 { font-size: 2.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">SAUMYA_K</div>
+        <a href="#" class="logo">SAUMYA_K</a>
         <div class="nav-links">
-            <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
             <a href="#contact">Contact</a>
         </div>
-        <button class="cv-btn">Download CV <i class="fas fa-download"></i></button>
+        <button class="cv-btn" onclick="window.print()">Resume <i class="fas fa-file-pdf"></i></button>
     </nav>
 
     <header class="hero">
         <div class="hero-img"></div>
-        <h1>Hi, I'm <span style="color:var(--accent)">Saumya</span></h1>
+        <h1>Hi, I'm <span style="color:var(--accent)">Saumya Kumar Das</span></h1>
         <div class="typewriter" id="typewriter"></div>
-        <div style="margin-top: 2rem;">
-            <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg); margin-right:1rem;">View Projects</a>
-            <a href="#contact" class="cv-btn">Contact Me</a>
+        <div style="margin-top: 2.5rem; display: flex; gap: 15px;">
+            <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg);">View My Work</a>
+            <a href="#contact" class="cv-btn">Let's Talk</a>
         </div>
     </header>
 
@@ -145,7 +151,7 @@
             <div class="bento-item item-tall">
                 <i class="fab fa-flutter"></i>
                 <h3>Flutter</h3>
-                <p>Cross-platform mobile apps</p>
+                <p style="color:var(--text-dim); font-size: 0.9rem;">Building high-performance Android & iOS apps.</p>
             </div>
             <div class="bento-item">
                 <i class="fab fa-java"></i>
@@ -161,12 +167,12 @@
             </div>
             <div class="bento-item">
                 <i class="fab fa-git-alt"></i>
-                <h3>Git/GitHub</h3>
+                <h3>Git Control</h3>
             </div>
             <div class="bento-item item-tall">
-                <i class="fas fa-code-branch"></i>
+                <i class="fas fa-server"></i>
                 <h3>JDBC</h3>
-                <p>Database Connectivity</p>
+                <p style="color:var(--text-dim); font-size: 0.9rem;">Seamless Database-to-Java connectivity.</p>
             </div>
         </div>
     </section>
@@ -175,27 +181,59 @@
         <div class="section-header"><h2>Featured Work</h2></div>
         <div class="project-grid">
             <div class="project-card">
-                <div class="project-preview"><i class="fas fa-shopping-bag fa-4xl"></i></div>
+                <div class="project-preview"><i class="fas fa-shopping-cart fa-4x" style="color:#ff4757"></i></div>
                 <div class="project-info">
                     <h3>E-Commerce Flutter App</h3>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Modern shopping UI with cart, user profiles, and filtering logic.</p>
                     <div class="project-tags">
-                        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">REST API</span>
+                        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span>
                     </div>
-                    <div style="display:flex; gap:15px;">
-                        <a href="#" style="color:var(--accent)"><i class="fab fa-github"></i> Code</a>
-                        <a href="#" style="color:var(--accent)"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    <div class="project-actions">
+                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        <a href="#"><i class="fas fa-link"></i> Live</a>
                     </div>
                 </div>
             </div>
+
             <div class="project-card">
-                <div class="project-preview"><i class="fas fa-university fa-4xl"></i></div>
+                <div class="project-preview"><i class="fas fa-university fa-4x" style="color:#2ed573"></i></div>
                 <div class="project-info">
                     <h3>Bank Management System</h3>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java desktop application for secure banking transactions and record management.</p>
                     <div class="project-tags">
-                        <span class="tag">Java Swing</span><span class="tag">MySQL</span><span class="tag">JDBC</span>
+                        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">MySQL</span><span class="tag">JDBC</span>
                     </div>
-                    <div style="display:flex; gap:15px;">
-                        <a href="#" style="color:var(--accent)"><i class="fab fa-github"></i> Code</a>
+                    <div class="project-actions">
+                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-preview"><i class="fas fa-cloud-sun fa-4x" style="color:#38bdf8"></i></div>
+                <div class="project-info">
+                    <h3>Weather Forecast App</h3>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Dynamic weather updates using API integration and real-time JSON parsing.</p>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span><span class="tag">API</span><span class="tag">JSON</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        <a href="#"><i class="fas fa-play"></i> Watch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-preview"><i class="fas fa-plane fa-4x" style="color:#ffa502"></i></div>
+                <div class="project-info">
+                    <h3>Travel Management System</h3>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java-based system for tour booking, form validation, and event handling.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span><span class="tag">Desktop UI</span><span class="tag">OOP</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Source</a>
                     </div>
                 </div>
             </div>
@@ -203,59 +241,87 @@
     </section>
 
     <section id="experience">
-        <div class="section-header"><h2>Career Journey</h2></div>
+        <div class="section-header"><h2>Experience & Education</h2></div>
         <div class="timeline">
+            <div class="timeline-item">
+                <h3>Bachelor in IT (Current)</h3>
+                <p style="color:var(--accent)">Phoenix College of Management, Kathmandu</p>
+                <p style="color:var(--text-dim)">Advancing technical knowledge in software engineering and management.</p>
+            </div>
             <div class="timeline-item">
                 <h3>Technical Assistant</h3>
                 <p style="color:var(--accent)">Subisu Cablenet | 2018 - 2019</p>
-                <p>Managed network troubleshooting and enterprise client support.</p>
+                <p style="color:var(--text-dim)">Customer support and network troubleshooting for enterprise clients.</p>
             </div>
             <div class="timeline-item">
                 <h3>Data Entry & Postal Assistant</h3>
-                <p style="color:var(--accent)">Postal Service | 2014 - 2017</p>
-                <p>Optimized data operations and logistics handling.</p>
+                <p style="color:var(--accent)">Postal Services | 2014 - 2017</p>
+                <p style="color:var(--text-dim)">Managed international postal data and operational logistics.</p>
             </div>
         </div>
     </section>
 
-    <footer id="contact" style="padding: 4rem 10%; border-top: 1px solid var(--glass); text-align: center;">
-        <h2>Get In Touch</h2>
-        <p style="color:var(--text-dim); margin-bottom: 2rem;">saumyakumar.das1124@pcmgmt.edu.np</p>
-        <button class="cv-btn" onclick="copyEmail()">Copy Email <i class="fas fa-copy"></i></button>
-        <div style="margin-top: 3rem; font-size: 1.5rem;">
-            <a href="https://linkedin.com/in/saumya-das-2b3b9b28b" target="_blank" style="color:var(--text-dim); margin: 0 1rem;"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/saumyakumardas" target="_blank" style="color:var(--text-dim); margin: 0 1rem;"><i class="fab fa-github"></i></a>
+    <footer id="contact" style="padding: 6rem 10%; border-top: 1px solid var(--glass); text-align: center;">
+        <h2>Let's Build Something Together</h2>
+        <p style="color:var(--text-dim); margin: 1.5rem 0;">Kathmandu, Nepal | +977-9804740881</p>
+        
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <button class="cv-btn" onclick="copyEmail()">saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-copy"></i></button>
         </div>
-        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">© 2026 Saumya Kumar Das | Built with Passion</p>
+
+        <div style="margin-top: 3rem; font-size: 2rem;">
+            <a href="https://linkedin.com/in/saumya-das-2b3b9b28b" target="_blank" style="color:var(--text-dim); margin: 0 1.5rem; transition: 0.3s;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/saumyakumardas" target="_blank" style="color:var(--text-dim); margin: 0 1.5rem; transition: 0.3s;"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.4;">© 2026 Saumya Kumar Das. All Rights Reserved.</p>
     </footer>
 
     <script>
         // Typewriter Effect
-        const text = "Junior Programmer | Flutter Developer | Java Expert";
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, 100);
+        const phrases = ["Flutter Developer", "Java Developer", "Junior Programmer"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        const target = document.getElementById("typewriter");
+
+        function typeEffect() {
+            if (charIndex < phrases[phraseIndex].length) {
+                target.innerHTML += phrases[phraseIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeEffect, 100);
+            } else {
+                setTimeout(eraseEffect, 2000);
             }
         }
-        window.onload = type;
 
-        // Scroll Reveal
+        function eraseEffect() {
+            if (charIndex > 0) {
+                target.innerHTML = phrases[phraseIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseEffect, 50);
+            } else {
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(typeEffect, 500);
+            }
+        }
+
+        // Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('reveal');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
             });
         }, { threshold: 0.1 });
 
         document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-        // Copy Email
+        // Copy Email Logic
         function copyEmail() {
             navigator.clipboard.writeText('saumyakumar.das1124@pcmgmt.edu.np');
             alert('Email copied to clipboard!');
         }
+
+        window.onload = typeEffect;
     </script>
 </body>
 </html>
