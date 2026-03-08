@@ -1,330 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Saumya Kumar Das | Junior Programmer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Saumya Kumar Das | Flutter & Java Developer Portfolio</title>
+    <meta name="description" content="Portfolio of Saumya Kumar Das, a Junior Programmer specializing in Flutter, Java, and MySQL. Discover mobile and desktop projects.">
+    <meta property="og:title" content="Saumya Kumar Das | Developer Portfolio">
+    <meta property="og:description" content="Specializing in Flutter Apps and Java Systems. Based in Kathmandu.">
+    <meta property="og:image" content="Saumya.jpg">
+    <meta property="og:url" content="https://github.com/saumyakumardas">
 
-  <!-- Font Awesome for GitHub & LinkedIn logos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary: #0a1f44;
-      --secondary: #1e90ff;
-      --light: #f5f7fa;
-      --dark: #222;
-    }
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    body {
-      background: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-    }
+        /* --- STICKY NAV --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 1.2rem 10%;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; border-bottom: 1px solid var(--glass);
+        }
+        .logo { font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.4rem; color: var(--accent); }
+        .nav-links a { text-decoration: none; color: var(--text-dim); margin-left: 2rem; font-weight: 500; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent); }
+        .cv-btn { 
+            background: transparent; border: 1px solid var(--accent); color: var(--accent);
+            padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; transition: var(--transition);
+        }
+        .cv-btn:hover { background: var(--accent); color: var(--bg); }
 
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      position: relative;
-    }
+        /* --- HERO --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 0 10%;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+        }
+        .hero-img {
+            width: 180px; height: 180px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: url('Saumya.jpg') center/cover;
+            border: 3px solid var(--accent); margin-bottom: 2rem;
+            animation: morph 8s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+        }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
+        .typewriter { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 1.5rem; }
 
-    /* Profile image (top-left) */
-    .profile-pic {
-      position: absolute;
-      top: 80px;
-      left: 190px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid white;
-    }  
+        /* --- BENTO SKILLS --- */
+        .bento-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+            padding: 4rem 0;
+        }
+        .bento-item {
+            background: var(--glass); border: 1px solid var(--glass);
+            padding: 2rem; border-radius: 20px; text-align: center;
+            transition: var(--transition);
+        }
+        .bento-item:hover { background: rgba(56, 189, 248, 0.05); border-color: var(--accent); transform: scale(1.02); }
+        .bento-item i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+        .item-tall { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
 
-  header {
-    padding-top: 110px;
-  }
+        /* --- PROJECTS --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .project-card {
+            background: var(--card-bg); border-radius: 16px; overflow: hidden;
+            border: 1px solid var(--glass); transition: var(--transition);
+        }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .project-preview { height: 200px; background: #334155; display: flex; align-items: center; justify-content: center; }
+        .project-info { padding: 1.5rem; }
+        .project-tags { margin: 1rem 0; }
+        .tag { font-size: 0.7rem; background: var(--bg); color: var(--accent); padding: 4px 10px; border-radius: 4px; margin-right: 5px; }
 
-    header h1 {
-      font-size: 2.5rem;
-    }
+        /* --- TIMELINE --- */
+        .timeline { border-left: 2px solid var(--accent); margin-left: 20px; padding-left: 30px; position: relative; }
+        .timeline-item { margin-bottom: 3rem; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -41px; top: 0;
+            width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent);
+        }
 
-    header p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
+        /* --- UTILITIES --- */
+        section { padding: 6rem 10%; opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+        section.reveal { opacity: 1; transform: translateY(0); }
+        .section-header { margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.5rem; border-bottom: 2px solid var(--accent); display: inline-block; }
 
-    nav {
-      background: #fff;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    section h2 {
-      color: var(--primary);
-      margin-bottom: 20px;
-      border-left: 5px solid var(--secondary);
-      padding-left: 10px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .skills span {
-      display: inline-block;
-      background: var(--secondary);
-      color: white;
-      padding: 8px 12px;
-      margin: 6px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-
-    .contact p {
-      margin: 8px 0;
-    }
-
-    /* Added only for social icons */
-    .social-icons a {
-      margin-right: 15px;
-      font-size: 22px;
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .social-icons a:hover {
-      color: var(--secondary);
-    }
-
-    footer {
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 0.8s ease;
-    }
-
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive fix for small screens */
-    @media (max-width: 600px) {
-      .profile-pic {
-        width: 70px;
-        height: 70px;
-        top: 15px;
-        left: 15px;
-      }
-
-      header h1 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-  <img src="Saumya.jpg" alt="Saumya Kumar Das" class="profile-pic">
-  <h1>Saumya Kumar Das</h1>
-  <p>Junior Programmer | Flutter Developer | Java Developer</p>
-</header>
+    <nav>
+        <div class="logo">SAUMYA_K</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="cv-btn">Download CV <i class="fas fa-download"></i></button>
+    </nav>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#experience">Experience</a>
-  <a href="#projects">Projects</a>
-  <a href="#education">Education</a>
-  <a href="#contact">Contact</a>
-</nav>
+    <header class="hero">
+        <div class="hero-img"></div>
+        <h1>Hi, I'm <span style="color:var(--accent)">Saumya</span></h1>
+        <div class="typewriter" id="typewriter"></div>
+        <div style="margin-top: 2rem;">
+            <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg); margin-right:1rem;">View Projects</a>
+            <a href="#contact" class="cv-btn">Contact Me</a>
+        </div>
+    </header>
 
-<section id="about" class="fade-in">
-  <h2>About Me</h2>
-  <div class="card">
-    <p>
-      I am a motivated junior programmer with strong fundamentals in software development.
-      I have experience in Flutter, Java, HTML/CSS, and database connectivity.
-      I enjoy learning new technologies and building real-world applications.
-      I can work independently as well as in a team.
-    </p>
-  </div>
-</section>
+    <section id="skills">
+        <div class="section-header"><h2>Technical Stack</h2></div>
+        <div class="bento-grid">
+            <div class="bento-item item-tall">
+                <i class="fab fa-flutter"></i>
+                <h3>Flutter</h3>
+                <p>Cross-platform mobile apps</p>
+            </div>
+            <div class="bento-item">
+                <i class="fab fa-java"></i>
+                <h3>Java</h3>
+            </div>
+            <div class="bento-item">
+                <i class="fas fa-database"></i>
+                <h3>MySQL</h3>
+            </div>
+            <div class="bento-item">
+                <i class="fab fa-html5"></i>
+                <h3>Frontend</h3>
+            </div>
+            <div class="bento-item">
+                <i class="fab fa-git-alt"></i>
+                <h3>Git/GitHub</h3>
+            </div>
+            <div class="bento-item item-tall">
+                <i class="fas fa-code-branch"></i>
+                <h3>JDBC</h3>
+                <p>Database Connectivity</p>
+            </div>
+        </div>
+    </section>
 
-<section id="skills" class="fade-in">
-  <h2>Technical Skills</h2>
-  <div class="card skills">
-    <span>Flutter</span>
-    <span>Dart</span>
-    <span>Java</span>
-    <span>Java Swing</span>
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JDBC</span>
-    <span>MySQL</span>
-    <span>API Integration</span>
-    <span>Git & GitHub</span>
-  </div>
-</section>
+    <section id="projects">
+        <div class="section-header"><h2>Featured Work</h2></div>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-preview"><i class="fas fa-shopping-bag fa-4xl"></i></div>
+                <div class="project-info">
+                    <h3>E-Commerce Flutter App</h3>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">REST API</span>
+                    </div>
+                    <div style="display:flex; gap:15px;">
+                        <a href="#" style="color:var(--accent)"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" style="color:var(--accent)"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-preview"><i class="fas fa-university fa-4xl"></i></div>
+                <div class="project-info">
+                    <h3>Bank Management System</h3>
+                    <div class="project-tags">
+                        <span class="tag">Java Swing</span><span class="tag">MySQL</span><span class="tag">JDBC</span>
+                    </div>
+                    <div style="display:flex; gap:15px;">
+                        <a href="#" style="color:var(--accent)"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="experience" class="fade-in">
-  <h2>Work Experience</h2>
+    <section id="experience">
+        <div class="section-header"><h2>Career Journey</h2></div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Technical Assistant</h3>
+                <p style="color:var(--accent)">Subisu Cablenet | 2018 - 2019</p>
+                <p>Managed network troubleshooting and enterprise client support.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Data Entry & Postal Assistant</h3>
+                <p style="color:var(--accent)">Postal Service | 2014 - 2017</p>
+                <p>Optimized data operations and logistics handling.</p>
+            </div>
+        </div>
+    </section>
 
-  <div class="card">
-    <h3>Technical Assistant – Subisu Cablenet Pvt. Ltd.</h3>
-    <p><strong>April 2018 – February 2019</strong></p>
-    <ul>
-      <li>Customer and enterprise technical support</li>
-      <li>Network troubleshooting and coordination</li>
-      <li>Handled phone, email, and in-person inquiries</li>
-    </ul>
-  </div>
+    <footer id="contact" style="padding: 4rem 10%; border-top: 1px solid var(--glass); text-align: center;">
+        <h2>Get In Touch</h2>
+        <p style="color:var(--text-dim); margin-bottom: 2rem;">saumyakumar.das1124@pcmgmt.edu.np</p>
+        <button class="cv-btn" onclick="copyEmail()">Copy Email <i class="fas fa-copy"></i></button>
+        <div style="margin-top: 3rem; font-size: 1.5rem;">
+            <a href="https://linkedin.com/in/saumya-das-2b3b9b28b" target="_blank" style="color:var(--text-dim); margin: 0 1rem;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/saumyakumardas" target="_blank" style="color:var(--text-dim); margin: 0 1rem;"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">© 2026 Saumya Kumar Das | Built with Passion</p>
+    </footer>
 
-  <div class="card">
-    <h3>Data Entry & Postal Assistant</h3>
-    <p><strong>August 2014 – November 2017</strong></p>
-    <ul>
-      <li>Data entry operations</li>
-      <li>Handled domestic and international postal deliveries</li>
-    </ul>
-  </div>
-</section>
+    <script>
+        // Typewriter Effect
+        const text = "Junior Programmer | Flutter Developer | Java Expert";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 100);
+            }
+        }
+        window.onload = type;
 
-<section id="projects" class="fade-in">
-  <h2>Projects</h2>
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('reveal');
+            });
+        }, { threshold: 0.1 });
 
-  <div class="card">
-    <h3>Bank Management System (Java Swing)</h3>
-    <ul>
-      <li>Core Java OOP concepts</li>
-      <li>GUI using Swing components</li>
-      <li>JDBC with MySQL</li>
-    </ul>
-  </div>
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-  <div class="card">
-    <h3>Travel Management System (Java)</h3>
-    <ul>
-      <li>Form validation and event handling</li>
-      <li>Desktop application development</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3>E-Commerce App (Flutter)</h3>
-    <ul>
-      <li>User authentication and profiles</li>
-      <li>Product listing, cart, filters</li>
-      <li>Modern Flutter UI</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3>Weather App (Flutter)</h3>
-    <ul>
-      <li>API integration</li>
-      <li>JSON data parsing</li>
-      <li>Custom UI with icons</li>
-    </ul>
-  </div>
-</section>
-
-<section id="education" class="fade-in">
-  <h2>Education & Training</h2>
-
-  <div class="card">
-    <h3>Bachelor in Information Technology (Running)</h3>
-    <p>Phoenix College of Management – Kathmandu</p>
-  </div>
-
-  <div class="card">
-    <h3>Flutter Development Diploma</h3>
-    <p>Broadway Infosys (2026)</p>
-  </div>
-</section>
-
-<section id="contact" class="fade-in contact">
-  <h2>Contact</h2>
-  <div class="card">
-    <p><strong>Email:</strong> saumyakumar.das1124@pcmgmt.edu.np</p>
-    <p><strong>Phone:</strong> +977-9804740881</p>
-    <p><strong>Location:</strong> Kathmandu, Nepal</p>
-
-    <!-- Added GitHub & LinkedIn with logos -->
-    <div class="social-icons">
-      <a href="https://linkedin.com/in/saumya-das-2b3b9b28b" target="_blank">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://github.com/saumyakumardas" target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 Saumya Kumar Das | Portfolio Website</p>
-</footer>
-
-<script>
-  const sections = document.querySelectorAll(".fade-in");
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  }, { threshold: 0.2 });
-
-  sections.forEach(section => observer.observe(section));
-</script>
-
+        // Copy Email
+        function copyEmail() {
+            navigator.clipboard.writeText('saumyakumar.das1124@pcmgmt.edu.np');
+            alert('Email copied to clipboard!');
+        }
+    </script>
 </body>
 </html>
