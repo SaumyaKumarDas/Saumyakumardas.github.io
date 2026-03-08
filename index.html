@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Saumya Kumar Das | Flutter & Java Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Saumya Das, a Junior Programmer specializing in Flutter, Java, and MySQL. Based in Kathmandu.">
-    <meta property="og:title" content="Saumya Das | Developer Portfolio">
+    <meta name="description" content="Portfolio of Saumya Kumar Das, a Junior Programmer specializing in Flutter, Java, and MySQL. Based in Kathmandu.">
+    <meta property="og:title" content="Saumya Kumar Das | Developer Portfolio">
     <meta property="og:description" content="Specializing in Flutter Apps and Java Systems. View my latest projects.">
     <meta property="og:image" content="Saumya.jpg">
     <meta property="og:url" content="https://github.com/saumyakumardas">
@@ -46,24 +46,27 @@
         .nav-links a:hover { color: var(--accent); }
         .cv-btn { 
             background: transparent; border: 1px solid var(--accent); color: var(--accent);
-            padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; 
-            transition: var(--transition); text-decoration: none; display: inline-block;
+            padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: var(--transition);
         }
         .cv-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
 
-        /* --- OPTIMIZED EMAIL BUTTON --- */
-        .email-btn-optimized {
-            background: rgba(255, 255, 255, 0.02); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+        /* --- EMAIL BUTTON OPTIMIZATION --- */
+        .email-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-main);
-            padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 500; cursor: pointer; 
-            transition: var(--transition); text-decoration: none; display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
             backdrop-filter: blur(4px);
         }
-        .email-btn-optimized:hover { 
-            border-color: var(--accent);
+        .email-btn:hover {
             background: rgba(56, 189, 248, 0.05);
+            border-color: var(--accent);
             color: var(--accent);
+            transform: translateY(-2px);
         }
 
         /* --- HERO --- */
@@ -153,7 +156,7 @@
 
     <header class="hero">
         <div class="hero-img"></div>
-        <h2>Hi, I'm <span style="color:var(--accent)">Saumya Das</span></h2>
+        <h1>Hi, I'm <span style="color:var(--accent)">Saumya Kumar Das</span></h1>
         <div class="typewriter" id="typewriter"></div>
         <div style="margin-top: 2.5rem; display: flex; gap: 15px;">
             <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg);">View My Work</a>
@@ -281,13 +284,8 @@
         <h2>Let's Build Something Together</h2>
         <p style="color:var(--text-dim); margin: 1.5rem 0;">Kathmandu, Nepal | +977-9804740881</p>
         
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-            <a href="mailto:saumyakumar.das1124@pcmgmt.edu.np" class="email-btn-optimized">
-                Email: saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-paper-plane"></i>
-            </a>
-            <button class="email-btn-optimized" onclick="copyEmail()" title="Copy to clipboard">
-                Copy Email <i class="fas fa-copy"></i>
-            </button>
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <button class="email-btn" onclick="copyEmail()">Email : saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-copy"></i></button>
         </div>
 
         <div style="margin-top: 3rem; font-size: 2rem;">
@@ -338,10 +336,8 @@
 
         // Copy Email Logic
         function copyEmail() {
-            const email = 'saumyakumar.das1124@pcmgmt.edu.np';
-            navigator.clipboard.writeText(email).then(() => {
-                alert('Email copied to clipboard!');
-            });
+            navigator.clipboard.writeText('saumyakumar.das1124@pcmgmt.edu.np');
+            alert('Email copied to clipboard!');
         }
 
         window.onload = typeEffect;
