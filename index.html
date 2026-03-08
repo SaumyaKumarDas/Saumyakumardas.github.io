@@ -35,6 +35,7 @@
       padding: 40px 20px;
       text-align: center;
       position: relative;
+      padding-top: 110px;
     }
 
     /* Profile image (top-left) */
@@ -48,10 +49,6 @@
       object-fit: cover;
       border: 3px solid white;
     }  
-
-  header {
-    padding-top: 110px;
-  }
 
     header h1 {
       font-size: 2.5rem;
@@ -121,7 +118,7 @@
       margin: 8px 0;
     }
 
-    /* Added only for social icons */
+    /* Social icons */
     .social-icons a {
       margin-right: 15px;
       font-size: 22px;
@@ -131,6 +128,50 @@
 
     .social-icons a:hover {
       color: var(--secondary);
+    }
+
+    /* Download CV button */
+    .download-cv {
+      display: inline-block;
+      padding: 10px 15px;
+      background: var(--secondary);
+      color: white;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .download-cv:hover {
+      opacity: 0.9;
+    }
+
+    /* Send Message form */
+    #contact-form {
+      margin-top: 20px;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #contact-form button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: var(--secondary);
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    #contact-form button:hover {
+      opacity: 0.9;
     }
 
     footer {
@@ -215,7 +256,6 @@
 
 <section id="experience" class="fade-in">
   <h2>Work Experience</h2>
-
   <div class="card">
     <h3>Technical Assistant – Subisu Cablenet Pvt. Ltd.</h3>
     <p><strong>April 2018 – February 2019</strong></p>
@@ -225,7 +265,6 @@
       <li>Handled phone, email, and in-person inquiries</li>
     </ul>
   </div>
-
   <div class="card">
     <h3>Data Entry & Postal Assistant</h3>
     <p><strong>August 2014 – November 2017</strong></p>
@@ -238,7 +277,6 @@
 
 <section id="projects" class="fade-in">
   <h2>Projects</h2>
-
   <div class="card">
     <h3>Bank Management System (Java Swing)</h3>
     <ul>
@@ -247,7 +285,6 @@
       <li>JDBC with MySQL</li>
     </ul>
   </div>
-
   <div class="card">
     <h3>Travel Management System (Java)</h3>
     <ul>
@@ -255,7 +292,6 @@
       <li>Desktop application development</li>
     </ul>
   </div>
-
   <div class="card">
     <h3>E-Commerce App (Flutter)</h3>
     <ul>
@@ -264,7 +300,6 @@
       <li>Modern Flutter UI</li>
     </ul>
   </div>
-
   <div class="card">
     <h3>Weather App (Flutter)</h3>
     <ul>
@@ -277,12 +312,10 @@
 
 <section id="education" class="fade-in">
   <h2>Education & Training</h2>
-
   <div class="card">
     <h3>Bachelor in Information Technology (Running)</h3>
     <p>Phoenix College of Management – Kathmandu</p>
   </div>
-
   <div class="card">
     <h3>Flutter Development Diploma</h3>
     <p>Broadway Infosys (2026)</p>
@@ -296,7 +329,6 @@
     <p><strong>Phone:</strong> +977-9804740881</p>
     <p><strong>Location:</strong> Kathmandu, Nepal</p>
 
-    <!-- Added GitHub & LinkedIn with logos -->
     <div class="social-icons">
       <a href="https://linkedin.com/in/saumya-das-2b3b9b28b" target="_blank">
         <i class="fab fa-linkedin"></i>
@@ -304,7 +336,19 @@
       <a href="https://github.com/saumyakumardas" target="_blank">
         <i class="fab fa-github"></i>
       </a>
+      <a href="Saumya_CV.pdf" class="download-cv" download>
+        <i class="fas fa-download"></i> Download CV
+      </a>
     </div>
+
+    <!-- Send Message Form -->
+    <h3 style="margin-top:20px;">Send Me a Message</h3>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </div>
 </section>
 
@@ -313,8 +357,8 @@
 </footer>
 
 <script>
+  // Fade-in scroll effect
   const sections = document.querySelectorAll(".fade-in");
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -322,8 +366,14 @@
       }
     });
   }, { threshold: 0.2 });
-
   sections.forEach(section => observer.observe(section));
+
+  // Simple Send Message handler
+  document.getElementById("contact-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Thank you! Your message has been sent.");
+    this.reset();
+  });
 </script>
 
 </body>
