@@ -44,11 +44,27 @@
         .logo { font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.4rem; color: var(--accent); text-decoration: none; }
         .nav-links a { text-decoration: none; color: var(--text-dim); margin-left: 2rem; font-weight: 500; transition: var(--transition); }
         .nav-links a:hover { color: var(--accent); }
+        
         .cv-btn { 
             background: transparent; border: 1px solid var(--accent); color: var(--accent);
             padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: var(--transition);
         }
         .cv-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
+
+        .email-btn {
+            background: var(--bg);
+            border: 1px solid var(--glass);
+            color: var(--text-dim);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .email-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
         /* --- HERO --- */
         .hero {
@@ -58,7 +74,7 @@
         }
         .hero-img {
             width: 180px; height: 180px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            background: url('Saumya.jpg') center/cover;
+            background: #1e293b url('Saumya.jpg') center/cover;
             border: 3px solid var(--accent); margin-bottom: 2rem;
             animation: morph 8s ease-in-out infinite;
         }
@@ -151,7 +167,7 @@
             <div class="bento-item item-tall">
                 <i class="fa-brands fa-flutter"></i>
                 <h3>Flutter</h3>
-                <p style="color:var(--text-dim); font-size: 0.9rem;">Building high-performance Android & iOS apps.</p>
+                <p style="color:var(--text-dim); font-size: 0.9rem;">Modern cross-platform development for Android & iOS.</p>
             </div>
             <div class="bento-item">
                 <i class="fab fa-java"></i>
@@ -167,12 +183,12 @@
             </div>
             <div class="bento-item">
                 <i class="fab fa-git-alt"></i>
-                <h3>Git Control</h3>
+                <h3>Git</h3>
             </div>
             <div class="bento-item item-tall">
                 <i class="fas fa-server"></i>
                 <h3>JDBC</h3>
-                <p style="color:var(--text-dim); font-size: 0.9rem;">Seamless Database-to-Java connectivity.</p>
+                <p style="color:var(--text-dim); font-size: 0.9rem;">Efficient Java-to-Database application layering.</p>
             </div>
         </div>
     </section>
@@ -181,30 +197,43 @@
         <div class="section-header"><h2>Featured Work</h2></div>
         <div class="project-grid">
             <div class="project-card">
-                <div class="project-preview"><i class="fas fa-shopping-cart fa-4x" style="color:#ff4757"></i></div>
+                <div class="project-preview"><i class="fas fa-bolt fa-4x" style="color:#f1c40f"></i></div>
                 <div class="project-info">
-                    <h3>E-Commerce Flutter App</h3>
-                    <p style="color:var(--text-dim); font-size: 0.9rem;">Modern shopping UI with cart, user profiles, and filtering logic.</p>
+                    <h3>Electricity Billing System</h3>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java Swing system for comprehensive utility billing management.</p>
                     <div class="project-tags">
-                        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span>
+                        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">MySQL</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
-                        <a href="#"><i class="fas fa-link"></i> Live</a>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-preview"><i class="fas fa-university fa-4x" style="color:#2ed573"></i></div>
+                <div class="project-preview"><i class="fab fa-youtube fa-4x" style="color:#ff0000"></i></div>
                 <div class="project-info">
-                    <h3>Bank Management System</h3>
-                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java desktop application for secure banking transactions and record management.</p>
+                    <h3>Flutter Beginners Course</h3>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">37-hour intensive tutorial for building cross-platform apps.</p>
                     <div class="project-tags">
-                        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">MySQL</span><span class="tag">JDBC</span>
+                        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span>
                     </div>
                     <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Bank-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
+                        <a href="https://youtu.be/VPvVD8t02U8?si=dJyDtjeO4r2gV6iu" target="_blank"><i class="fas fa-play-circle"></i> Watch Video</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-preview"><i class="fas fa-shopping-cart fa-4x" style="color:#ff4757"></i></div>
+                <div class="project-info">
+                    <h3>E-Commerce Flutter App</h3>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Mobile shopping experience with product search and cart logic.</p>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">UI/UX</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
                     </div>
                 </div>
             </div>
@@ -213,13 +242,12 @@
                 <div class="project-preview"><i class="fas fa-cloud-sun fa-4x" style="color:#38bdf8"></i></div>
                 <div class="project-info">
                     <h3>Weather Forecast App</h3>
-                    <p style="color:var(--text-dim); font-size: 0.9rem;">Dynamic weather updates using API integration and real-time JSON parsing.</p>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">API-driven application for real-time global weather updates.</p>
                     <div class="project-tags">
                         <span class="tag">Flutter</span><span class="tag">API</span><span class="tag">JSON</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/SaumyaKumarDas/Weather-App" target="_blank"><i class="fab fa-github"></i> Code</a>
-                        <a href="#"><i class="fas fa-play"></i> Watch</a>
                     </div>
                 </div>
             </div>
@@ -228,12 +256,26 @@
                 <div class="project-preview"><i class="fas fa-plane fa-4x" style="color:#ffa502"></i></div>
                 <div class="project-info">
                     <h3>Travel Management System</h3>
-                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java-based system for tour booking, form validation, and event handling.</p>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java desktop application for tour booking and operations.</p>
                     <div class="project-tags">
-                        <span class="tag">Java</span><span class="tag">Desktop UI</span><span class="tag">OOP</span>
+                        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">JDBC</span>
                     </div>
                     <div class="project-actions">
                         <a href="https://github.com/SaumyaKumarDas/Travel-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-preview"><i class="fas fa-university fa-4x" style="color:#2ed573"></i></div>
+                <div class="project-info">
+                    <h3>Bank Management System</h3>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Secure Java application for account handling and data records.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">Swing</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Bank-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
                     </div>
                 </div>
             </div>
@@ -244,19 +286,22 @@
         <div class="section-header"><h2>Experience & Education</h2></div>
         <div class="timeline">
             <div class="timeline-item">
-                <h3>Bachelor in IT (Current)</h3>
+                <h3>Bachelor in Information Technology (Running)</h3>
                 <p style="color:var(--accent)">Phoenix College of Management, Kathmandu</p>
-                <p style="color:var(--text-dim)">Advancing technical knowledge in software engineering and management.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Flutter Development Diploma</h3>
+                <p style="color:var(--accent)">Broadway Infosys | 2026</p>
             </div>
             <div class="timeline-item">
                 <h3>Technical Assistant</h3>
-                <p style="color:var(--accent)">Subisu Cablenet | 2018 - 2019</p>
-                <p style="color:var(--text-dim)">Customer support and network troubleshooting for enterprise clients.</p>
+                <p style="color:var(--accent)">Subisu Cablenet Pvt. Ltd. | Apr 2018 - Feb 2019</p>
+                <p style="color:var(--text-dim)">Provided technical support and troubleshooting for networking services.</p>
             </div>
             <div class="timeline-item">
                 <h3>Data Entry & Postal Assistant</h3>
-                <p style="color:var(--accent)">Postal Services | 2014 - 2017</p>
-                <p style="color:var(--text-dim)">Managed international postal data and operational logistics.</p>
+                <p style="color:var(--accent)">Post Office | Aug 2014 - Nov 2017</p>
+                <p style="color:var(--text-dim)">Managed information entry and assisted in postal operational tasks.</p>
             </div>
         </div>
     </section>
@@ -266,7 +311,9 @@
         <p style="color:var(--text-dim); margin: 1.5rem 0;">Kathmandu, Nepal | +977-9804740881</p>
         
         <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-            <button class="cv-btn" onclick="copyEmail()">saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-copy"></i></button>
+            <button class="email-btn" onclick="copyEmail()">
+                saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-copy" style="margin-left: 10px;"></i>
+            </button>
         </div>
 
         <div style="margin-top: 3rem; font-size: 2rem;">
@@ -277,7 +324,6 @@
     </footer>
 
     <script>
-        // Typewriter Effect
         const phrases = ["Flutter Developer", "Java Developer", "Junior Programmer"];
         let phraseIndex = 0;
         let charIndex = 0;
@@ -304,7 +350,6 @@
             }
         }
 
-        // Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -315,7 +360,6 @@
 
         document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-        // Copy Email Logic
         function copyEmail() {
             navigator.clipboard.writeText('saumyakumar.das1124@pcmgmt.edu.np');
             alert('Email copied to clipboard!');
