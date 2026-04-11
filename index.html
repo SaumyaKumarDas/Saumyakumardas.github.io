@@ -85,6 +85,16 @@
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
         .typewriter { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 1.5rem; min-height: 1.6em; }
 
+        /* --- ABOUT SECTION --- */
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            text-align: left;
+        }
+        .about-text p { margin-bottom: 1.5rem; }
+
         /* --- BENTO SKILLS --- */
         .bento-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
@@ -125,9 +135,9 @@
         /* --- UTILITIES --- */
         section { padding: 8rem 10%; opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
         section.reveal { opacity: 1; transform: translateY(0); }
-        .section-header { margin-bottom: 3rem; }
-        .section-header h2 { font-size: 2.5rem; position: relative; padding-bottom: 10px; }
-        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: var(--accent); }
+        .section-header { margin-bottom: 3rem; text-align: center; }
+        .section-header h2 { font-size: 2.5rem; position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 60px; height: 4px; background: var(--accent); transform: translateX(-50%); }
 
         @media (max-width: 992px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
@@ -143,10 +153,10 @@
     <nav>
         <a href="#" class="logo">SAUMYA_K</a>
         <div class="nav-links">
+            <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
         </div>
         <button class="cv-btn" onclick="window.print()">Resume <i class="fas fa-file-pdf"></i></button>
     </nav>
@@ -161,13 +171,22 @@
         </div>
     </header>
 
+    <section id="about">
+        <div class="section-header"><h2>My Journey</h2></div>
+        <div class="about-text">
+            <p>My journey in technology began at <strong>Subisu Cablenet in Kathmandu</strong>, where I served as a Technical Assistant. This phase was pivotal, as troubleshooting complex enterprise network systems taught me the critical importance of reliable infrastructure—a mindset I carry into every line of code I write today.</p>
+            <p>Driven by a desire to build rather than just maintain, I transitioned into software engineering. I specialized in Mobile App Development through an intensive diploma at <strong>Broadway Infosys</strong>, where I discovered the power of the Flutter framework for creating seamless cross-platform experiences.</p>
+            <p>Today, as a <strong>Kathmandu-based Developer</strong>, I bridge the gap between backend stability and frontend elegance. Whether I am architecting Java Backend Systems or crafting intuitive mobile UIs, my goal is to deliver high-performance solutions that solve real-world problems.</p>
+        </div>
+    </section>
+
     <section id="skills">
         <div class="section-header"><h2>Technical Stack</h2></div>
         <div class="bento-grid">
             <div class="bento-item item-tall">
                 <i class="fa-brands fa-flutter"></i>
                 <h3>Flutter</h3>
-                <p style="color:var(--text-dim); font-size: 0.9rem;">High-performance cross-platform development for mobile.</p>
+                <p style="color:var(--text-dim); font-size: 0.9rem;">Modern cross-platform development for mobile.</p>
             </div>
             <div class="bento-item">
                 <i class="fab fa-java"></i>
@@ -228,7 +247,7 @@
                 <div class="project-preview"><i class="fas fa-shopping-cart fa-4x" style="color:#ff4757"></i></div>
                 <div class="project-info">
                     <h3>E-Commerce Flutter App</h3>
-                    <p style="color:var(--text-dim); font-size: 0.9rem;">Modern shopping interface with cart functionality and search.</p>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Mobile shopping experience with product search and cart logic.</p>
                     <div class="project-tags">
                         <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Mobile UI</span>
                     </div>
@@ -242,7 +261,7 @@
                 <div class="project-preview"><i class="fas fa-cloud-sun fa-4x" style="color:#38bdf8"></i></div>
                 <div class="project-info">
                     <h3>Weather Forecast App</h3>
-                    <p style="color:var(--text-dim); font-size: 0.9rem;">Dynamic weather updates using OpenWeather API and JSON.</p>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">API-driven application for real-time global weather updates.</p>
                     <div class="project-tags">
                         <span class="tag">Flutter</span><span class="tag">API</span><span class="tag">JSON</span>
                     </div>
@@ -256,7 +275,7 @@
                 <div class="project-preview"><i class="fas fa-plane fa-4x" style="color:#ffa502"></i></div>
                 <div class="project-info">
                     <h3>Travel Management System</h3>
-                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java system for tour management and user bookings.</p>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java desktop application for tour booking and operations.</p>
                     <div class="project-tags">
                         <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">JDBC</span>
                     </div>
@@ -270,7 +289,7 @@
                 <div class="project-preview"><i class="fas fa-bolt fa-4x" style="color:#f1c40f"></i></div>
                 <div class="project-info">
                     <h3>Electricity Billing System</h3>
-                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java Swing and JDBC system for utility bill management.</p>
+                    <p style="color:var(--text-dim); font-size: 0.9rem;">Java Swing system for comprehensive utility billing management.</p>
                     <div class="project-tags">
                         <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">MySQL</span>
                     </div>
@@ -296,12 +315,12 @@
             <div class="timeline-item">
                 <h3>Technical Assistant</h3>
                 <p style="color:var(--accent)">Subisu Cablenet Pvt. Ltd. | Apr 2018 - Feb 2019</p>
-                <p style="color:var(--text-dim)">Networking support and hardware troubleshooting.</p>
+                <p style="color:var(--text-dim)">Provided technical support and troubleshooting for enterprise networking services and infrastructure.</p>
             </div>
             <div class="timeline-item">
                 <h3>Data Entry & Postal Assistant</h3>
                 <p style="color:var(--accent)">Post Office | Aug 2014 - Nov 2017</p>
-                <p style="color:var(--text-dim)">Information management and operational assistance.</p>
+                <p style="color:var(--text-dim)">Managed information entry, data accuracy, and assisted in postal operational tasks.</p>
             </div>
         </div>
     </section>
