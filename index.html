@@ -125,6 +125,33 @@
         .project-actions a { text-decoration: none; color: var(--accent); font-size: 0.85rem; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 5px; }
         .project-actions a:hover { color: var(--text-main); }
 
+        /* --- MEDITATION CORNER --- */
+        .meditation-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--glass);
+            text-align: center;
+        }
+        .meditation-img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--accent);
+        }
+        .meditation-desc {
+            color: var(--text-dim);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        audio {
+            width: 100%;
+            border-radius: 30px;
+            filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Styled to match dark theme */
+        }
+
         /* --- TIMELINE --- */
         .timeline { border-left: 2px solid var(--accent); margin-left: 20px; padding-left: 30px; }
         .timeline-item { margin-bottom: 3rem; position: relative; }
@@ -155,6 +182,7 @@
         <a href="#" class="logo">SAUMYA_K</a>
         <div class="nav-links">
             <a href="#about">About</a>
+            <a href="#meditation">Dhyaan</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
@@ -178,6 +206,18 @@
             <p>My journey in technology began at <strong>Subisu Cablenet in Kathmandu</strong>, where I worked as a Technical Assistant. In this role, I was deeply involved in diagnosing and resolving issues within complex enterprise-level network systems. This hands-on experience exposed me to the backbone of digital connectivity and helped me understand how critical stable and reliable infrastructure is to any technological ecosystem. It was a transformative phase in my career, shaping a problem-solving mindset and attention to detail that I continue to apply in every line of code I write today.</p>
             <p>However, while maintaining and troubleshooting systems gave me a strong technical foundation, I found myself increasingly drawn toward creating solutions rather than just supporting them. Motivated by this shift in perspective, I transitioned into the field of software engineering. I pursued an intensive diploma in Mobile App Development at <strong>Broadway Infosys</strong>, where I honed my programming skills and explored modern development practices. It was during this time that I discovered the Flutter framework, which fascinated me with its ability to build high-performance, visually consistent applications across multiple platforms from a single codebase.</p>
             <p>Today, as a <strong>developer based in Kathmandu</strong>, I bring together my background in networking and my expertise in software development to deliver well-rounded solutions. I take pride in bridging the gap between robust backend systems and engaging frontend experiences. Whether I am designing scalable Java-based backend architectures or developing intuitive and responsive mobile user interfaces, my focus remains on building efficient, reliable, and user-centric applications that address real-world challenges.</p>
+        </div>
+    </section>
+
+    <section id="meditation">
+        <div class="section-header"><h2>Meditation Corner</h2></div>
+        <div class="meditation-card">
+            <img src="Dr. Narayan Dutt Shrimali.jpg" alt="Dr. Narayan Dutt Shrimali" class="meditation-img">
+            <p class="meditation-desc">"Mantra to Obtain the state of Dhyaan Dharana & Samadhi and enhancing our Spiritual Journey"</p>
+            <audio controls>
+                <source src="meditation_audio.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
     </section>
 
