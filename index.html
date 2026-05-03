@@ -68,15 +68,27 @@
 
         /* --- HERO --- */
         .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 0 10%;
+            height: 100vh; 
+            display: flex; 
+            flex-direction: row; /* Changed to row */
+            justify-content: space-between; 
+            align-items: center; 
+            text-align: left; /* Aligned text left */
+            padding: 0 10%;
             background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+            gap: 2rem;
+        }
+        .hero-content {
+            flex: 1;
         }
         .hero-img {
-            width: 180px; height: 180px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            width: 320px; /* Increased size */
+            height: 320px; /* Increased size */
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             background: #1e293b url('Saumya.jpg') center/cover;
-            border: 3px solid var(--accent); margin-bottom: 2rem;
+            border: 3px solid var(--accent);
             animation: morph 8s ease-in-out infinite;
+            flex-shrink: 0;
         }
         @keyframes morph {
             0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
@@ -149,7 +161,7 @@
         audio {
             width: 100%;
             border-radius: 30px;
-            filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Styled to match dark theme */
+            filter: invert(100%) hue-rotate(180deg) brightness(1.5); 
         }
 
         /* --- TIMELINE --- */
@@ -167,7 +179,11 @@
         .section-header h2 { font-size: 2.5rem; position: relative; display: inline-block; padding-bottom: 10px; }
         .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 60px; height: 4px; background: var(--accent); transform: translateX(-50%); }
 
-        @media (max-width: 992px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 992px) { 
+            .bento-grid { grid-template-columns: repeat(2, 1fr); } 
+            .hero { flex-direction: column-reverse; text-align: center; justify-content: center; }
+            .hero-img { width: 240px; height: 240px; }
+        }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             section { padding: 4rem 5%; }
@@ -191,13 +207,15 @@
     </nav>
 
     <header class="hero">
-        <div class="hero-img"></div>
-        <h1>Hi, I'm <span style="color:var(--accent)">Saumya Kumar Das</span></h1>
-        <div class="typewriter" id="typewriter"></div>
-        <div style="margin-top: 2.5rem; display: flex; gap: 15px;">
-            <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg);">View My Work</a>
-            <a href="#contact" class="cv-btn">Let's Talk</a>
+        <div class="hero-content">
+            <h1>Hi, I'm <span style="color:var(--accent)">Saumya Kumar Das</span></h1>
+            <div class="typewriter" id="typewriter"></div>
+            <div style="margin-top: 2.5rem; display: flex; gap: 15px; justify-content: flex-start;">
+                <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg);">View My Work</a>
+                <a href="#contact" class="cv-btn">Let's Talk</a>
+            </div>
         </div>
+        <div class="hero-img"></div>
     </header>
 
     <section id="about">
