@@ -52,9 +52,6 @@
         }
         .cv-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
 
-        /* Mobile specific download link (Hidden on desktop) */
-        .mobile-cv-link { display: none; text-decoration: none; font-size: 1.2rem; color: var(--accent); }
-
         .email-btn {
             background: var(--bg);
             border: 1px solid var(--glass);
@@ -229,12 +226,10 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .cv-btn { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
-            .mobile-cv-link { display: block; margin-right: 15px; }
             section { padding: 4rem 5%; }
             .hero h1 { font-size: 2.2rem; }
             .bento-grid { grid-template-columns: 1fr; }
             .resume-modal { padding: 20px 5%; }
-            /* On mobile, emphasize the download over the iframe */
             .modal-content iframe { height: 75%; }
             .modal-download-area { position: static !important; padding: 20px; text-align: center; }
         }
@@ -252,8 +247,6 @@
             <a href="#experience">Experience</a>
         </div>
         <div style="display: flex; align-items: center;">
-            <!-- Simple download icon for very small screens -->
-            <a href="Resume__ (13).pdf" download class="mobile-cv-link" title="Download Resume"><i class="fas fa-download"></i></a>
             <button class="cv-btn" onclick="toggleResume()">Resume <i class="fas fa-file-pdf"></i></button>
         </div>
     </nav>
