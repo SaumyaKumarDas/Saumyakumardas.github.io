@@ -68,13 +68,13 @@
 
         /* --- HERO --- */
         .hero {
-            min-height: 100vh; /* Changed from height to min-height for mobile content flow */
+            min-height: 100vh;
             display: flex; 
             flex-direction: row; 
             justify-content: space-between; 
             align-items: center; 
             text-align: left; 
-            padding: 100px 10% 0 10%; /* Added top padding for fixed nav */
+            padding: 100px 10% 0 10%; 
             background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
             gap: 2rem;
         }
@@ -179,6 +179,31 @@
         .section-header h2 { font-size: 2.5rem; position: relative; display: inline-block; padding-bottom: 10px; }
         .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 60px; height: 4px; background: var(--accent); transform: translateX(-50%); }
 
+        /* --- RESUME MODAL --- */
+        .resume-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 2000;
+            padding: 50px 10%;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            height: 90vh;
+            border-radius: 20px;
+            position: relative;
+            border: 1px solid var(--glass);
+        }
+        .close-modal {
+            position: absolute;
+            top: -40px; right: 0;
+            color: var(--text-main);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 992px) { 
             .hero { 
@@ -202,6 +227,7 @@
             section { padding: 4rem 5%; }
             .hero h1 { font-size: 2.2rem; }
             .bento-grid { grid-template-columns: 1fr; }
+            .resume-modal { padding: 20px 5%; }
         }
     </style>
 </head>
@@ -216,22 +242,31 @@
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
         </div>
-        <button class="cv-btn" onclick="window.print()">Resume <i class="fas fa-file-pdf"></i></button>
+        <button class="cv-btn" onclick="toggleResume()">Resume <i class="fas fa-file-pdf"></i></button>
     </nav>
+
+    <div id="resumeModal" class="resume-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleResume()">&times;</span>
+            <iframe src="Resume__ (13).pdf" width="100%" height="100%" style="border-radius: 20px; border: none;"></iframe>
+            <div style="position: absolute; bottom: 20px; right: 20px;">
+                <a href="Resume__ (13).pdf" download class="cv-btn" style="background:var(--accent); color:var(--bg); text-decoration: none;">Download PDF</a>
+            </div>
+        </div>
+    </div>
 
     <header class="hero">
         <div class="hero-content">
             <h1>Hi, I'm <span style="color:var(--accent)">Saumya Kumar Das</span></h1>
             <div class="typewriter" id="typewriter"></div>
             <div style="margin-top: 2.5rem; display: flex; gap: 15px; justify-content: flex-start; flex-wrap: wrap;">
-                <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg);">View My Work</a>
-                <a href="#contact" class="cv-btn">Let's Talk</a>
+                <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg); text-decoration: none;">View My Work</a>
+                <a href="#contact" class="cv-btn" style="text-decoration: none;">Let's Talk</a>
             </div>
         </div>
         <div class="hero-img"></div>
     </header>
 
-    <!-- Sections remain unchanged -->
     <section id="about">
         <div class="section-header"><h2>My Journey</h2></div>
         <div class="about-text">
@@ -455,6 +490,24 @@
         function copyEmail() {
             navigator.clipboard.writeText('saumyakumar.das1124@pcmgmt.edu.np');
             alert('Email copied to clipboard!');
+        }
+
+        function toggleResume() {
+            const modal = document.getElementById("resumeModal");
+            if (modal.style.display === "block") {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            } else {
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden";
+            }
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("resumeModal");
+            if (event.target == modal) {
+                toggleResume();
+            }
         }
 
         window.onload = typeEffect;
