@@ -138,6 +138,77 @@
         .project-actions a { text-decoration: none; color: var(--accent); font-size: 0.85rem; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 5px; }
         .project-actions a:hover { color: var(--text-main); }
 
+        /* --- MAGAZINE STYLES --- */
+        .folder-box {
+            background: var(--glass);
+            border: 1px solid var(--glass);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .folder-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
+            font-family: 'JetBrains Mono';
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        .folder-title:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+        .folder-title i.chevron {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+        }
+        .folder-title.active i.chevron {
+            transform: rotate(90deg);
+        }
+        .pdf-list-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .pdf-list-container.show {
+            max-height: 2000px; /* Large enough to fit content */
+            margin-top: 1rem;
+        }
+        .pdf-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            list-style: none;
+        }
+        .pdf-item {
+            background: var(--card-bg);
+            border: 1px solid var(--glass);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        .pdf-item:hover { border-color: var(--accent); }
+        .pdf-name { font-size: 0.85rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .pdf-btns { display: flex; gap: 10px; }
+        .btn-sm {
+            flex: 1;
+            padding: 5px;
+            font-size: 0.75rem;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .view-btn { background: var(--accent); color: var(--bg); }
+        .down-btn { border: 1px solid var(--accent); color: var(--accent); }
+
         /* --- MEDITATION CORNER --- */
         .meditation-card {
             max-width: 600px;
@@ -245,6 +316,7 @@
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
+            <a href="#magazines">Magazines</a>
         </div>
         <div style="display: flex; align-items: center;">
             <button class="cv-btn" onclick="toggleResume()">Resume <i class="fas fa-file-pdf"></i></button>
@@ -441,6 +513,88 @@
         </div>
     </section>
 
+    <section id="magazines">
+        <div class="section-header"><h2>Mantra Tantra Yantra Vigyan</h2></div>
+        <div class="about-text" style="text-align: center; margin-bottom: 3rem;">
+            <p>This is the Pdf of Mantra Tantra Yantra Vigyan Magazine by Dr. Narayan Dutt Shrimali Ji.</p>
+        </div>
+
+        <div class="folder-box">
+            <!-- Toggable Folder Title -->
+            <div class="folder-title" id="folder1997" onclick="toggleFolder('list1997', 'folder1997')">
+                <i class="fas fa-folder-open"></i> 
+                Mantra Tantra Yantra Vigyan Magazine / 1997
+                <i class="fas fa-chevron-right chevron"></i>
+            </div>
+            
+            <!-- Hidden List Container -->
+            <div class="pdf-list-container" id="list1997">
+                <div class="pdf-list">
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">January 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/January.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/January.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">February 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/February.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/February.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">March 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/March.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/March.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">April 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/April.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/April.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">May 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/May.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/May.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">June 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/June.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/June.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">July 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/July.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/July.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">August 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/August.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/August.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">September 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/September.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/September.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">October 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/October.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/October.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">November 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/November.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/November.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                    <div class="pdf-item">
+                        <i class="fas fa-file-pdf fa-2x" style="color:#ff4757"></i>
+                        <div class="pdf-name">December 1997.pdf</div>
+                        <div class="pdf-btns"><a href="1997/December.pdf" target="_blank" class="btn-sm view-btn">View</a><a href="1997/December.pdf" download class="btn-sm down-btn">Download</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer id="contact" style="padding: 6rem 10%; border-top: 1px solid var(--glass); text-align: center;">
         <h2>Let's Build Something Together</h2>
         <p style="color:var(--text-dim); margin: 1.5rem 0;">Kathmandu, Nepal | +977-9804740881</p>
@@ -509,6 +663,15 @@
                 modal.style.display = "block";
                 document.body.style.overflow = "hidden";
             }
+        }
+
+        /* --- FOLDER TOGGLE LOGIC --- */
+        function toggleFolder(listId, titleId) {
+            const list = document.getElementById(listId);
+            const title = document.getElementById(titleId);
+            
+            list.classList.toggle('show');
+            title.classList.toggle('active');
         }
 
         window.onclick = function(event) {
