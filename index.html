@@ -45,6 +45,17 @@
         .nav-links a { text-decoration: none; color: var(--text-dim); margin-left: 2rem; font-weight: 500; transition: var(--transition); }
         .nav-links a:hover { color: var(--accent); }
         
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
         .cv-btn { 
             background: transparent; border: 1px solid var(--accent); color: var(--accent);
             padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: var(--transition);
@@ -224,7 +235,24 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            
+            .nav-links { 
+                display: none; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 2rem;
+                border-bottom: 1px solid var(--glass);
+                text-align: center;
+            }
+
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 1rem 0; font-size: 1.2rem; }
+
             .cv-btn { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
             section { padding: 4rem 5%; }
             .hero h1 { font-size: 2.2rem; }
@@ -239,14 +267,20 @@
 
     <nav>
         <a href="#" class="logo">SAUMYA_K</a>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#meditation">Dhyaan</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#magazine">Magazine</a>
-            <a href="#books">Books</a>
+        
+        <!-- Toggle Button for Mobile -->
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#meditation" onclick="toggleMenu()">Dhyaan</a>
+            <a href="#projects" onclick="toggleMenu()">Projects</a>
+            <a href="#skills" onclick="toggleMenu()">Skills</a>
+            <a href="#experience" onclick="toggleMenu()">Experience</a>
+            <a href="#magazine" onclick="toggleMenu()">Magazine</a>
+            <a href="#books" onclick="toggleMenu()">Books</a>
         </div>
         <div style="display: flex; align-items: center;">
             <button class="cv-btn" onclick="toggleResume()">Resume <i class="fas fa-file-pdf"></i></button>
@@ -533,6 +567,12 @@
                 modal.style.display = "block";
                 document.body.style.overflow = "hidden";
             }
+        }
+
+        /* NEW: Toggle function for Mobile Menu */
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
         }
 
         window.onclick = function(event) {
