@@ -110,15 +110,68 @@
         .typewriter { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 1.5rem; min-height: 1.6em; }
 
         /* --- ABOUT SECTION --- */
-        .about-text {
-            max-width: 850px;
+        .journey-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        .about-text {
             font-size: 1.05rem;
             color: var(--text-dim);
             text-align: left;
             line-height: 1.8;
         }
         .about-text p { margin-bottom: 1.5rem; }
+        
+        /* Point-wise highlights layout */
+        .journey-highlights {
+            background: var(--glass);
+            border: 1px solid var(--glass);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            height: fit-content;
+        }
+        .journey-highlights h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--glass);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .highlight-point {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .highlight-point i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 0.25rem;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .highlight-content h4 {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        .highlight-content p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
 
         /* --- SKILLS --- */
         .bento-grid {
@@ -232,6 +285,7 @@
             .hero-content { display: flex; flex-direction: column; align-items: center; }
             .hero-content div { justify-content: center !important; }
             .bento-grid { grid-template-columns: repeat(2, 1fr); } 
+            .journey-container { grid-template-columns: 1fr; gap: 2rem; }
         }
         
         @media (max-width: 768px) {
@@ -313,10 +367,50 @@
 
     <section id="about">
         <div class="section-header"><h2>My Journey</h2></div>
-        <div class="about-text">
-            <p>My journey in technology began at <strong>Subisu Cablenet in Kathmandu</strong>, where I worked as a Technical Assistant. In this role, I was deeply involved in diagnosing and resolving issues within complex enterprise-level network systems. This hands-on experience exposed me to the backbone of digital connectivity and helped me understand how critical stable and reliable infrastructure is to any technological ecosystem. It was a transformative phase in my career, shaping a problem-solving mindset and attention to detail that I continue to apply in every line of code I write today.</p>
-            <p>However, while maintaining and troubleshooting systems gave me a strong technical foundation, I found myself increasingly drawn toward creating solutions rather than just supporting them. Motivated by this shift in perspective, I transitioned into the field of software engineering. I pursued an intensive diploma in Mobile App Development at <strong>Broadway Infosys</strong>, where I honed my programming skills and explored modern development practices. It was during this time that I discovered the Flutter framework, which fascinated me with its ability to build high-performance, visually consistent applications across multiple platforms from a single codebase.</p>
-            <p>Today, as a <strong>developer based in Kathmandu</strong>, I bring together my background in networking and my expertise in software development to deliver well-rounded solutions. I take pride in bridging the gap between robust backend systems and engaging frontend experiences. Whether I am designing scalable Java-based backend architectures or developing intuitive and responsive mobile user interfaces, my focus remains on building efficient, reliable, and user-centric applications that address real-world challenges.</p>
+        <div class="journey-container">
+            <!-- Left Side: Original Narrative Paragraphs -->
+            <div class="about-text">
+                <p>My journey in technology began at <strong>Subisu Cablenet in Kathmandu</strong>, where I worked as a Technical Assistant. In this role, I was deeply involved in diagnosing and resolving issues within complex enterprise-level network systems. This hands-on experience exposed me to the backbone of digital connectivity and helped me understand how critical stable and reliable infrastructure is to any technological ecosystem. It was a transformative phase in my career, shaping a problem-solving mindset and attention to detail that I continue to apply in every line of code I write today.</p>
+                <p>However, while maintaining and troubleshooting systems gave me a strong technical foundation, I found myself increasingly drawn toward creating solutions rather than just supporting them. Motivated by this shift in perspective, I transitioned into the field of software engineering. I pursued an intensive diploma in Mobile App Development at <strong>Broadway Infosys</strong>, where I honed my programming skills and explored modern development practices. It was during this time that I discovered the Flutter framework, which fascinated me with its ability to build high-performance, visually consistent applications across multiple platforms from a single codebase.</p>
+                <p>Today, as a <strong>developer based in Kathmandu</strong>, I bring together my background in networking and my expertise in software development to deliver well-rounded solutions. I take pride in bridging the gap between robust backend systems and engaging frontend experiences. Whether I am designing scalable Java-based backend architectures or developing intuitive and responsive mobile user interfaces, my focus remains on building efficient, reliable, and user-centric applications that address real-world challenges.</p>
+            </div>
+
+            <!-- Right Side: Beautifully Curated Point-wise Highlights -->
+            <div class="journey-highlights">
+                <h3>Key Milestones</h3>
+                
+                <div class="highlight-point">
+                    <i class="fas fa-network-wired"></i>
+                    <div class="highlight-content">
+                        <h4>Infrastructure Roots</h4>
+                        <p>Started at <strong>Subisu Cablenet</strong>, engineering and diagnosing core network structures to foster a performance-first structural mindset.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-point">
+                    <i class="fas fa-rocket"></i>
+                    <div class="highlight-content">
+                        <h4>The Creative Shift</h4>
+                        <p>Transitioned from technical ecosystem support to solution engineering driven by a strong desire to build consumer applications.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-point">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="highlight-content">
+                        <h4>Specialized Training</h4>
+                        <p>Completed an intensive Mobile Application Development Diploma at <strong>Broadway Infosys</strong>, mastering modern architectures.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-point">
+                    <i class="fas fa-code"></i>
+                    <div class="highlight-content">
+                        <h4>Cross-Platform Expertise</h4>
+                        <p>Adopted <strong>Flutter & Java</strong> to specialize in beautiful, high-efficiency system delivery from backend to user interface.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -569,7 +663,7 @@
             }
         }
 
-        /* NEW: Toggle function for Mobile Menu */
+        /* Toggle function for Mobile Menu */
         function toggleMenu() {
             const navLinks = document.getElementById("navLinks");
             navLinks.classList.toggle("active");
