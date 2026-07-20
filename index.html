@@ -529,275 +529,6 @@
 </section>
 
 <section id="projects">
-    <!-- Embedded Styles -->
-    <style>
-        #projects {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            position: relative;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.02);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-preview {
-            padding: 2rem;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .project-info {
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-info h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.25rem;
-        }
-
-        .project-description {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .project-actions {
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-        }
-
-        .project-actions a,
-        .btn-doc {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 0.9rem;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            text-decoration: none;
-            color: inherit;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .project-actions a:hover,
-        .btn-doc:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-doc {
-            background: #00d2d3;
-            color: #0d1117;
-            font-weight: 600;
-            border: none;
-        }
-
-        .btn-doc:hover {
-            background: #00b4b5;
-        }
-
-        /* Fullscreen PDF Viewer Overlay */
-        .pdf-fullscreen-viewer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #0f1218;
-            z-index: 99999;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            color: #e6edf3;
-        }
-
-        .pdf-fullscreen-viewer.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* PDF Viewer Toolbar */
-        .pdf-toolbar {
-            height: 54px;
-            background: #161b22;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
-            gap: 0.5rem;
-            z-index: 10;
-            user-select: none;
-            flex-wrap: wrap;
-        }
-
-        .pdf-toolbar-group {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .pdf-toolbar-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #f0f6fc;
-            padding: 0.45rem 0.65rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            transition: background 0.15s ease, border-color 0.15s ease;
-        }
-
-        .pdf-toolbar-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .pdf-toolbar-btn:focus-visible {
-            outline: 2px solid #00d2d3;
-        }
-
-        .pdf-page-indicator {
-            font-size: 0.85rem;
-            color: #8b949e;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .pdf-page-input {
-            width: 36px;
-            background: #0d1117;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            text-align: center;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            padding: 0.15rem;
-        }
-
-        .pdf-zoom-level {
-            font-size: 0.85rem;
-            color: #8b949e;
-            min-width: 45px;
-            text-align: center;
-        }
-
-        /* Main Scrollable Canvas Container */
-        .pdf-viewport-container {
-            flex: 1;
-            overflow: auto;
-            background: #0d1117;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 1rem;
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        /* A4 Page Viewport Styling */
-        .pdf-page-wrapper {
-            position: relative;
-            background: #ffffff;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
-            border-radius: 4px;
-            transition: transform 0.15s ease;
-            aspect-ratio: 1 / 1.4142; /* Strict A4 Proportion */
-            max-width: 100%;
-        }
-
-        .pdf-page-wrapper canvas {
-            display: block;
-        }
-
-        /* Loading Indicator */
-        .pdf-loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            color: #00d2d3;
-        }
-
-        .pdf-spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(0, 210, 211, 0.1);
-            border-top: 4px solid #00d2d3;
-            border-radius: 50%;
-            animation: pdfSpin 0.8s linear infinite;
-        }
-
-        @keyframes pdfSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 600px) {
-            .pdf-toolbar-text {
-                display: none;
-            }
-            .pdf-toolbar {
-                padding: 0 0.5rem;
-            }
-        }
-    </style>
-
     <div class="section-header">
         <h2>Featured Work</h2>
     </div>
@@ -818,7 +549,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    <button class="btn-doc" onclick="openPdfViewer('jarvis')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -839,7 +569,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Fake-News-Detection.git" target="_blank"><i class="fab fa-github"></i> Source</a>
-                    <button class="btn-doc" onclick="openPdfViewer('fake-news')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -860,7 +589,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Language-Detection.git" target="_blank"><i class="fab fa-github"></i> Source</a>
-                    <button class="btn-doc" onclick="openPdfViewer('language-detection')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -882,7 +610,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Google-Search-Analysis-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
-                    <button class="btn-doc" onclick="openPdfViewer('google-search')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -904,7 +631,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Uber-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
-                    <button class="btn-doc" onclick="openPdfViewer('uber-analysis')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -926,7 +652,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/E-Commerce-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
-                    <button class="btn-doc" onclick="openPdfViewer('ecommerce-analysis')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -946,7 +671,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Gmail-Automation-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    <button class="btn-doc" onclick="openPdfViewer('gmail-automation')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -966,7 +690,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    <button class="btn-doc" onclick="openPdfViewer('youtube-downloader')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -986,7 +709,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Bank-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
-                    <button class="btn-doc" onclick="openPdfViewer('bank-management')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -1006,7 +728,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Weather-App" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    <button class="btn-doc" onclick="openPdfViewer('weather-app')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -1026,7 +747,6 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Travel-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
-                    <button class="btn-doc" onclick="openPdfViewer('travel-management')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -1046,294 +766,10 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    <button class="btn-doc" onclick="openPdfViewer('electricity-billing')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Dedicated Full-Screen PDF Viewer App Container -->
-    <div id="pdfViewerModal" class="pdf-fullscreen-viewer" role="dialog" aria-label="PDF Document Viewer" aria-modal="true">
-        <!-- PDF Controls Toolbar -->
-        <div class="pdf-toolbar">
-            <!-- Left Group: Navigation & Close -->
-            <div class="pdf-toolbar-group">
-                <button class="pdf-toolbar-btn" onclick="closePdfViewer()" aria-label="Back to Portfolio">
-                    <i class="fas fa-arrow-left"></i> <span class="pdf-toolbar-text">Back</span>
-                </button>
-                <span style="color:rgba(255,255,255,0.2); margin:0 0.2rem;">|</span>
-                <button class="pdf-toolbar-btn" onclick="changePdfPage(-1)" aria-label="Previous Page">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="pdf-page-indicator">
-                    <input type="text" id="pdfPageNum" class="pdf-page-input" value="1" onchange="jumpToPdfPage(this.value)" aria-label="Current Page Number">
-                    <span>/ <span id="pdfPageCount">1</span></span>
-                </div>
-                <button class="pdf-toolbar-btn" onclick="changePdfPage(1)" aria-label="Next Page">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <!-- Middle Group: Zoom & Fit Controls -->
-            <div class="pdf-toolbar-group">
-                <button class="pdf-toolbar-btn" onclick="zoomPdf(-0.15)" aria-label="Zoom Out">
-                    <i class="fas fa-search-minus"></i>
-                </button>
-                <span id="pdfZoomLevel" class="pdf-zoom-level">100%</span>
-                <button class="pdf-toolbar-btn" onclick="zoomPdf(0.15)" aria-label="Zoom In">
-                    <i class="fas fa-search-plus"></i>
-                </button>
-                <button class="pdf-toolbar-btn" onclick="fitPdfToWidth()" aria-label="Fit to Width">
-                    <i class="fas fa-arrows-alt-h"></i> <span class="pdf-toolbar-text">Fit Width</span>
-                </button>
-                <button class="pdf-toolbar-btn" onclick="fitPdfToPage()" aria-label="Fit to Page">
-                    <i class="fas fa-compress-arrows-alt"></i> <span class="pdf-toolbar-text">Fit Page</span>
-                </button>
-            </div>
-
-            <!-- Right Group: Operations & Fullscreen -->
-            <div class="pdf-toolbar-group">
-                <button class="pdf-toolbar-btn" onclick="rotatePdf()" aria-label="Rotate Document">
-                    <i class="fas fa-redo"></i>
-                </button>
-                <button class="pdf-toolbar-btn" onclick="downloadPdf()" aria-label="Download Document">
-                    <i class="fas fa-download"></i> <span class="pdf-toolbar-text">Download</span>
-                </button>
-                <button class="pdf-toolbar-btn" onclick="printPdf()" aria-label="Print Document">
-                    <i class="fas fa-print"></i>
-                </button>
-                <button class="pdf-toolbar-btn" onclick="togglePdfFullscreen()" aria-label="Toggle Fullscreen">
-                    <i class="fas fa-expand"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Scrollable Document Viewport -->
-        <div id="pdfViewport" class="pdf-viewport-container">
-            <div id="pdfLoader" class="pdf-loader">
-                <div class="pdf-spinner"></div>
-                <span>Rendering PDF...</span>
-            </div>
-            <div id="pdfCanvasContainer" class="pdf-page-wrapper">
-                <canvas id="pdfRenderCanvas"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript PDF.js Engine & Controller -->
-    <script>
-        const pdfFiles = {
-            'jarvis': 'jarvis_project_details.pdf',
-            'fake-news': 'pdfs/fake-news-detection.pdf',
-            'language-detection': 'pdfs/language-detection.pdf',
-            'google-search': 'pdfs/google-search-analysis.pdf',
-            'uber-analysis': 'pdfs/uber-data-analysis.pdf',
-            'ecommerce-analysis': 'pdfs/ecommerce-analysis.pdf',
-            'gmail-automation': 'pdfs/gmail-automation.pdf',
-            'youtube-downloader': 'pdfs/youtube-downloader.pdf',
-            'bank-management': 'pdfs/bank-management.pdf',
-            'weather-app': 'pdfs/weather-app.pdf',
-            'travel-management': 'pdfs/travel-management.pdf',
-            'electricity-billing': 'pdfs/electricity-billing.pdf'
-        };
-
-        let pdfDoc = null;
-        let pageNum = 1;
-        let scale = 1.0;
-        let rotation = 0;
-        let currentPdfUrl = '';
-        let isPdfjsLoaded = false;
-
-        // Lazy-load Mozilla PDF.js library on demand
-        function loadPdfJsScript(callback) {
-            if (isPdfjsLoaded) {
-                callback();
-                return;
-            }
-            const script = document.createElement('script');
-            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
-            script.onload = () => {
-                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-                isPdfjsLoaded = true;
-                callback();
-            };
-            document.head.appendChild(script);
-        }
-
-        function openPdfViewer(projectId) {
-            const pdfUrl = pdfFiles[projectId];
-            if (!pdfUrl) {
-                alert('PDF file not specified for this project.');
-                return;
-            }
-
-            currentPdfUrl = pdfUrl;
-            document.getElementById('pdfLoader').style.display = 'flex';
-            document.getElementById('pdfViewerModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            // Push route hash without page refresh
-            window.location.hash = `resume-viewer?file=${projectId}`;
-
-            loadPdfJsScript(() => {
-                pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
-                    pdfDoc = pdf;
-                    document.getElementById('pdfPageCount').textContent = pdf.numPages;
-                    pageNum = 1;
-                    scale = 1.0;
-                    rotation = 0;
-                    fitPdfToWidth();
-                    
-                }).catch(err => {
-                    console.error("Error loading PDF:", err);
-                    alert("Could not load PDF document. Please make sure the file exists.");
-                    closePdfViewer();
-                });
-            });
-        }
-
-        function renderPdfPage(num) {
-            if (!pdfDoc) return;
-
-            pdfDoc.getPage(num).then(page => {
-                const canvas = document.getElementById('pdfRenderCanvas');
-                const ctx = canvas.getContext('2d');
-                const viewport = page.getViewport({ scale: scale, rotation: rotation });
-
-                // Responsive scaling using devicePixelRatio for crisp high-DPI view
-                const outputScale = window.devicePixelRatio || 1;
-                canvas.width = Math.floor(viewport.width * outputScale);
-                canvas.height = Math.floor(viewport.height * outputScale);
-                
-                const container = document.getElementById('pdfCanvasContainer');
-                container.style.width = `${viewport.width}px`;
-                container.style.height = `${viewport.height}px`;
-
-                const transform = outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null;
-
-                const renderContext = {
-                    canvasContext: ctx,
-                    transform: transform,
-                    viewport: viewport
-                };
-
-                page.render(renderContext).promise.then(() => {
-                    document.getElementById('pdfLoader').style.display = 'none';
-                    document.getElementById('pdfPageNum').value = num;
-                    document.getElementById('pdfZoomLevel').textContent = `${Math.round(scale * 100)}%`;
-                });
-            });
-        }
-
-        function changePdfPage(delta) {
-            if (!pdfDoc) return;
-            const newNum = pageNum + delta;
-            if (newNum >= 1 && newNum <= pdfDoc.numPages) {
-                pageNum = newNum;
-                renderPdfPage(pageNum);
-            }
-        }
-
-        function jumpToPdfPage(val) {
-            const num = parseInt(val);
-            if (pdfDoc && num >= 1 && num <= pdfDoc.numPages) {
-                pageNum = num;
-                renderPdfPage(pageNum);
-            }
-        }
-
-        function zoomPdf(delta) {
-            if (scale + delta >= 0.4 && scale + delta <= 3.0) {
-                scale += delta;
-                renderPdfPage(pageNum);
-            }
-        }
-
-        function fitPdfToWidth() {
-            if (!pdfDoc) return;
-            pdfDoc.getPage(pageNum).then(page => {
-                const viewportContainer = document.getElementById('pdfViewport');
-                const pageViewport = page.getViewport({ scale: 1, rotation: rotation });
-                const availableWidth = viewportContainer.clientWidth - 60;
-                scale = availableWidth / pageViewport.width;
-                renderPdfPage(pageNum);
-            });
-        }
-
-        function fitPdfToPage() {
-            if (!pdfDoc) return;
-            pdfDoc.getPage(pageNum).then(page => {
-                const viewportContainer = document.getElementById('pdfViewport');
-                const pageViewport = page.getViewport({ scale: 1, rotation: rotation });
-                const availableHeight = viewportContainer.clientHeight - 80;
-                scale = availableHeight / pageViewport.height;
-                renderPdfPage(pageNum);
-            });
-        }
-
-        function rotatePdf() {
-            rotation = (rotation + 90) % 360;
-            renderPdfPage(pageNum);
-        }
-
-        function downloadPdf() {
-            if (!currentPdfUrl) return;
-            const link = document.createElement('a');
-            link.href = currentPdfUrl;
-            link.download = currentPdfUrl.split('/').pop();
-            link.click();
-        }
-
-        function printPdf() {
-            if (!currentPdfUrl) return;
-            const printWindow = window.open(currentPdfUrl, '_blank');
-            printWindow.print();
-        }
-
-        function togglePdfFullscreen() {
-            const viewer = document.getElementById('pdfViewerModal');
-            if (!document.fullscreenElement) {
-                viewer.requestFullscreen().catch(err => alert(`Error: ${err.message}`));
-            } else {
-                document.exitFullscreen();
-            }
-        }
-
-        function closePdfViewer() {
-            const modal = document.getElementById('pdfViewerModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            
-            if (window.location.hash.includes('resume-viewer')) {
-                history.pushState("", document.title, window.location.pathname + window.location.search);
-            }
-
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            }
-        }
-
-        // Keyboard Navigation (Esc, Left/Right Arrows)
-        document.addEventListener('keydown', function(event) {
-            const viewer = document.getElementById('pdfViewerModal');
-            if (!viewer.classList.contains('active')) return;
-
-            if (event.key === 'Escape') {
-                closePdfViewer();
-            } else if (event.key === 'ArrowRight') {
-                changePdfPage(1);
-            } else if (event.key === 'ArrowLeft') {
-                changePdfPage(-1);
-            }
-        });
-
-        // Listen for browser navigation (Back button)
-        window.addEventListener('hashchange', function() {
-            if (!window.location.hash.includes('resume-viewer')) {
-                closePdfViewer();
-            }
-        });
-    </script>
 </section>
     
     <section id="experience">
@@ -1480,5 +916,3 @@
     </script>
 </body>
 </html>
-
-
