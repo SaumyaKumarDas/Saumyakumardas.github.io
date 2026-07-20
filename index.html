@@ -529,6 +529,239 @@
 </section>
 
 <section id="projects">
+    <!-- Embedded Styles -->
+    <style>
+        #projects {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-preview {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .project-info {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+        }
+
+        .project-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .project-actions a,
+        .btn-doc {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.9rem;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: inherit;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .project-actions a:hover,
+        .btn-doc:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-doc {
+            background: #00d2d3;
+            color: #0d1117;
+            font-weight: 600;
+            border: none;
+        }
+
+        .btn-doc:hover {
+            background: #00b4b5;
+        }
+
+        /* Full Page PDF Document Modal */
+        .pdf-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100vh;
+            background: #1e1e1e;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .pdf-modal-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .pdf-document-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pdf-toolbar {
+            padding: 0.6rem 1.2rem;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            flex-shrink: 0;
+        }
+
+        .pdf-toolbar-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pdf-toolbar-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .pdf-btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            border: 1px solid #4a4a4a;
+            background: #3a3a3a;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .pdf-btn:hover {
+            background: #4a4a4a;
+        }
+
+        .pdf-btn-close {
+            background: #e63946;
+            color: white;
+            border: none;
+        }
+
+        .pdf-btn-close:hover {
+            background: #c92a37;
+        }
+
+        /* Document Page Container - Takes 100% Remaining Height */
+        .pdf-page-viewer {
+            width: 100%;
+            height: 100%;
+            flex-grow: 1;
+            border: none;
+            background: #525659;
+            display: block;
+        }
+
+        /* Print Media Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .pdf-document-container, .pdf-document-container * {
+                visibility: visible;
+            }
+            .pdf-document-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .pdf-toolbar {
+                display: none !important;
+            }
+        }
+    </style>
+
     <div class="section-header">
         <h2>Featured Work</h2>
     </div>
@@ -549,6 +782,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <button class="btn-doc" onclick="openPdfModal('jarvis')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -569,6 +803,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Fake-News-Detection.git" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    <button class="btn-doc" onclick="openPdfModal('fake-news')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -589,6 +824,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Language-Detection.git" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    <button class="btn-doc" onclick="openPdfModal('language-detection')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -610,6 +846,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Google-Search-Analysis-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    <button class="btn-doc" onclick="openPdfModal('google-search')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -631,6 +868,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Uber-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    <button class="btn-doc" onclick="openPdfModal('uber-analysis')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -652,6 +890,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/E-Commerce-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    <button class="btn-doc" onclick="openPdfModal('ecommerce-analysis')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -671,6 +910,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Gmail-Automation-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <button class="btn-doc" onclick="openPdfModal('gmail-automation')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -690,6 +930,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <button class="btn-doc" onclick="openPdfModal('youtube-downloader')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -709,6 +950,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Bank-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    <button class="btn-doc" onclick="openPdfModal('bank-management')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -728,6 +970,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Weather-App" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <button class="btn-doc" onclick="openPdfModal('weather-app')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -747,6 +990,7 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/SaumyaKumarDas/Travel-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    <button class="btn-doc" onclick="openPdfModal('travel-management')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
@@ -766,10 +1010,83 @@
                 </div>
                 <div class="project-actions">
                     <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <button class="btn-doc" onclick="openPdfModal('electricity-billing')"><i class="fas fa-file-pdf"></i> View PDF</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Hidden PDF Modal Document Viewer -->
+    <div id="pdfModalBackdrop" class="pdf-modal-backdrop">
+        <div class="pdf-document-container">
+            <div class="pdf-toolbar">
+                <span id="pdfModalTitle" class="pdf-toolbar-title"><i class="fas fa-file-pdf"></i> Project Overview Document</span>
+                <div class="pdf-toolbar-actions">
+                    <a id="pdfExternalLink" href="#" target="_blank" class="pdf-btn"><i class="fas fa-external-link-alt"></i> Open New Tab</a>
+                    <button class="pdf-btn pdf-btn-close" onclick="closePdfModal()"><i class="fas fa-times"></i> Close</button>
+                </div>
+            </div>
+            <iframe id="pdfViewerFrame" class="pdf-page-viewer" title="PDF Viewer" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <!-- Embedded JavaScript Data and Logic -->
+    <script>
+        const pdfFiles = {
+            'jarvis': 'pdfs/jarvis-documentation.pdf',
+            'fake-news': 'pdfs/fake-news-detection.pdf',
+            'language-detection': 'pdfs/language-detection.pdf',
+            'google-search': 'pdfs/google-search-analysis.pdf',
+            'uber-analysis': 'pdfs/uber-data-analysis.pdf',
+            'ecommerce-analysis': 'pdfs/ecommerce-analysis.pdf',
+            'gmail-automation': 'pdfs/gmail-automation.pdf',
+            'youtube-downloader': 'pdfs/youtube-downloader.pdf',
+            'bank-management': 'pdfs/bank-management.pdf',
+            'weather-app': 'pdfs/weather-app.pdf',
+            'travel-management': 'pdfs/travel-management.pdf',
+            'electricity-billing': 'pdfs/electricity-billing.pdf'
+        };
+
+        function openPdfModal(projectId) {
+            const pdfUrl = pdfFiles[projectId];
+            
+            if (!pdfUrl) {
+                alert('PDF file not specified for this project.');
+                return;
+            }
+
+            const frame = document.getElementById('pdfViewerFrame');
+            const externalLink = document.getElementById('pdfExternalLink');
+            const titleElem = document.getElementById('pdfModalTitle');
+
+            const formattedTitle = projectId.replace(/-/g, ' ').toUpperCase();
+            titleElem.innerHTML = `<i class="fas fa-file-pdf"></i> ${formattedTitle} - DOCUMENTATION`;
+
+            // Updated PDF view URL parameters to fit full page in web browsers
+            frame.src = pdfUrl + '#view=FitH&toolbar=1';
+            externalLink.href = pdfUrl;
+
+            document.getElementById('pdfModalBackdrop').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfModal() {
+            const backdrop = document.getElementById('pdfModalBackdrop');
+            const frame = document.getElementById('pdfViewerFrame');
+
+            backdrop.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            frame.src = 'about:blank';
+        }
+
+        // Close on Escape Key Press
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePdfModal();
+            }
+        });
+    </script>
 </section>
     
     <section id="experience">
