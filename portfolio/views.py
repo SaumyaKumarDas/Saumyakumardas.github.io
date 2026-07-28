@@ -1,3 +1,4 @@
+import threading
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib import messages
@@ -10,37 +11,40 @@ def index(request):
     return render(request, 'index.html')
 
 
+def send_email_in_background(message):
+    """Sends email in a separate background thread so HTTP requests don't time out."""
+    try:
+        send_mail(
+            subject=f"New Portfolio Message from {message.name}",
+            message=(
+                f"You received a new message from your portfolio contact form:\n\n"
+                f"Name: {message.name}\n"
+                f"Email: {message.email}\n\n"
+                f"Message:\n{message.message}"
+            ),
+            from_email=None,
+            recipient_list=['dassaumya13@gmail.com'],
+            fail_silently=True,
+        )
+    except Exception as e:
+        print("Email background sending failed:", e)
+
+
 def send_message(request):
     if request.method == 'POST':
         form = ContactMessageForm(request.POST)
         if form.is_valid():
-            # 1. Saves directly into your database (viewable in /admin/)
+            # 1. Saves directly into database (/admin/)
             message = form.save()
 
-            # 2. Sends an email notification directly to your inbox
-            try:
-                # Adjust 'recipient_list' below to your personal receiving email address
-                send_mail(
-                    subject=f"New Portfolio Message from {message.name}",
-                    message=(
-                        f"You received a new message from your portfolio contact form:\n\n"
-                        f"Name: {message.name}\n"
-                        f"Email: {message.email}\n\n"
-                        f"Message:\n{message.message}"
-                    ),
-                    from_email=None,  # Uses DEFAULT_FROM_EMAIL set in settings.py
-                    recipient_list=['dassaumya13@gmail.com'],  # <-- Replace with your personal email address
-                    fail_silently=True,  # Prevents crashing the user response if SMTP is temporarily down
-                )
-            except Exception as e:
-                print("Email failed to send:", e)
+            # 2. Trigger email sending in background thread
+            threading.Thread(target=send_email_in_background, args=(message,)).start()
 
             return JsonResponse({
                 'status': 'success',
                 'message': 'Thank you! Your message has been sent successfully.'
             })
         else:
-            # Prints form errors to browser console / Network tab
             print("Form errors:", form.errors)
             return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
 
