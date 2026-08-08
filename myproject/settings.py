@@ -82,13 +82,15 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 # Database configuration using PostgreSQL on production and SQLite locally
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=os.environ.get('DATABASE_URL1'),
         conn_max_age=600,
-        conn_health_checks=True,
+        ssl_require=True
     )
 }
+
 
 
 # Password validation
