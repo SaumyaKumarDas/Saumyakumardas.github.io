@@ -34,7 +34,12 @@ ALLOWED_HOSTS = ['saumyadas.com.np',
     'localhost']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://saumyadas.com.np',
+    'https://www.saumyadas.com.np',
+    'https://my-django-portfolio-project.onrender.com',]
 # Application definition
 
 INSTALLED_APPS = [
