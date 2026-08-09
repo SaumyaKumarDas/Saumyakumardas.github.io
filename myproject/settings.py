@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['saumyadas.com.np',
     '127.0.0.1',
     'localhost']
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
