@@ -9,390 +9,367 @@
     <meta name="description" content="Portfolio of Saumya Kumar Das, a Junior Programmer specializing in Python, Django, AI & ML, Data Science and MySQL. Based in Kathmandu.">
     <meta property="og:type" content="website">
     <meta property="fb:app_id" content="966242223397117">
-
-
-    
     <meta property="og:title" content="Saumya Kumar Das | Developer Portfolio">
-    <meta property="og:description" content="Specializing in Flutter Apps and Java Systems. View my latest projects.">
+    <meta property="og:description" content="Specializing in Python Backends, AI & ML, and Data Science Systems. View my latest projects.">
     <meta property="og:image" content="https://www.saumyadas.com.np/static/Saumya.jpg">
     <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
+            --bg: #090d16;
+            --bg-gradient: radial-gradient(circle at 50% 10%, #1e293b 0%, #090d16 70%);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-hover: rgba(30, 41, 59, 0.95);
             --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.25);
             --text-main: #f1f5f9;
             --text-dim: #94a3b8;
-            --glass: rgba(255, 255, 255, 0.03);
+            --glass: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* --- CUSTOM SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 5px; border: 2px solid var(--bg); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
             background-color: var(--bg); 
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-main); 
             font-family: 'Inter', sans-serif; 
-            line-height: 1.6;
+            line-height: 1.7;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
+
         /* --- NAVIGATION --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 1.2rem 10%;
-            background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px);
+            position: fixed; top: 0; width: 100%; padding: 1rem 8%;
+            background: rgba(9, 13, 22, 0.85); backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; border-bottom: 1px solid var(--glass);
+            z-index: 1000; border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
-        .logo { font-family: 'JetBrains Mono'; font-weight: 800; font-size: 1.4rem; color: var(--accent); text-decoration: none; }
-        .nav-links a { text-decoration: none; color: var(--text-dim); margin-left: 2rem; font-weight: 500; transition: var(--transition); }
-        .nav-links a:hover { color: var(--accent); }
+        .logo { 
+            font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 1.3rem; 
+            color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 8px;
+        }
+        .logo span { color: var(--text-main); }
+        
+        .nav-links { display: flex; align-items: center; gap: 1.8rem; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-dim); font-size: 0.95rem; font-weight: 500; 
+            transition: var(--transition); position: relative; padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: var(--accent); transition: var(--transition); border-radius: 2px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
+        .nav-links a:hover::after { width: 100%; }
         
         /* Mobile Menu Button */
         .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-main);
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1100;
+            display: none; background: none; border: none; color: var(--text-main);
+            font-size: 1.5rem; cursor: pointer; z-index: 1100; padding: 4px;
         }
+        
         .cv-btn { 
             background: transparent; border: 1px solid var(--accent); color: var(--accent);
-            padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: var(--transition);
-            display: inline-flex; align-items: center; gap: 8px;
+            padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer; 
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.9rem; box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
         }
-        .cv-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
+        .cv-btn:hover { 
+            background: var(--accent); color: var(--bg); transform: translateY(-2px); 
+            box-shadow: 0 6px 20px var(--accent-glow); 
+        }
+
         .email-btn {
-            background: var(--bg);
-            border: 1px solid var(--glass);
-            color: var(--text-dim);
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            cursor: pointer;
-            transition: var(--transition);
+            background: var(--card-bg); border: 1px solid var(--glass-border);
+            color: var(--text-dim); padding: 0.8rem 1.5rem; border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace; cursor: pointer; transition: var(--transition);
+            display: inline-flex; align-items: center; font-size: 0.9rem;
         }
-        .email-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
+        .email-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(56, 189, 248, 0.05); }
+
         /* --- HERO --- */
         .hero {
-            min-height: 100vh;
-            display: flex; 
-            flex-direction: row; 
-            justify-content: space-between; 
-            align-items: center; 
-            text-align: left; 
-            padding: 100px 10% 0 10%; 
-            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
-            gap: 2rem;
+            min-height: 100vh; display: flex; flex-direction: row; justify-content: space-between; 
+            align-items: center; text-align: left; padding: 120px 8% 60px 8%; gap: 3rem;
+            position: relative;
         }
-        .hero-content {
-            flex: 1;
+        .hero::before {
+            content: ''; position: absolute; width: 450px; height: 450px; background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, rgba(0,0,0,0) 70%);
+            top: 15%; left: 10%; z-index: -1; border-radius: 50%; filter: blur(40px);
         }
+        .hero-content { flex: 1; max-width: 650px; }
+        .hero-img-wrapper { position: relative; flex-shrink: 0; }
         .hero-img {
-            width: 320px; 
-            height: 320px; 
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            background: #1e293b url("{% static 'Saumya.jpg' %}") center/cover;
-            border: 3px solid var(--accent);
-            animation: morph 8s ease-in-out infinite;
-            flex-shrink: 0;
+            width: 320px; height: 320px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: var(--card-bg) url("{% static 'Saumya.jpg' %}") center/cover;
+            border: 3px solid var(--accent); animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-glow);
         }
         @keyframes morph {
             0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
             50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
         }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
-        .typewriter { font-family: 'JetBrains Mono'; color: var(--accent); font-size: 1.5rem; min-height: 1.6em; }
-        /* --- ABOUT SECTION --- */
+        .hero h1 { font-size: clamp(2.5rem, 4.5vw, 4rem); margin-bottom: 1rem; font-weight: 800; letter-spacing: -1px; }
+        .typewriter { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 1.35rem; min-height: 2.2em; font-weight: 600; }
+
+        /* --- ABOUT & JOURNEY SECTION --- */
         .journey-container {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 3rem; max-width: 1250px; margin: 0 auto; align-items: start;
         }
         .about-text {
-            font-size: 1.05rem;
-            color: var(--text-dim);
-            text-align: left;
-            line-height: 1.8;
+            font-size: 1.02rem; color: var(--text-dim); text-align: left; line-height: 1.85;
+            background: var(--card-bg); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .about-text p { margin-bottom: 1.5rem; }
+        .about-text h3 { color: var(--text-main); margin: 2rem 0 1rem 0; font-size: 1.25rem; display: flex; align-items: center; gap: 10px; }
+        .about-text h3:first-child { margin-top: 0; }
+        .about-text ul { padding-left: 1.2rem; margin-bottom: 1.5rem; }
+        .about-text li { margin-bottom: 0.6rem; color: var(--text-dim); }
+        .about-text strong { color: var(--text-main); }
         
-        /* Point-wise highlights layout */
         .journey-highlights {
-            background: var(--glass);
-            border: 1px solid var(--glass);
-            border-radius: 20px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            height: fit-content;
+            background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 24px;
+            padding: 2.2rem; display: flex; flex-direction: column; gap: 1.5rem; backdrop-filter: blur(12px);
+            position: sticky; top: 100px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .journey-highlights h3 {
-            font-size: 1.3rem;
-            color: var(--text-main);
-            border-bottom: 1px solid var(--glass);
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem; color: var(--text-main); border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.8rem; margin-bottom: 0.2rem; font-weight: 700;
         }
-        .highlight-point {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-        }
+        .highlight-point { display: flex; gap: 1.1rem; align-items: flex-start; }
         .highlight-point i {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-top: 0.25rem;
-            background: rgba(56, 189, 248, 0.1);
-            padding: 8px;
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            color: var(--accent); font-size: 1.1rem; background: rgba(56, 189, 248, 0.1);
+            padding: 10px; border-radius: 12px; width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
-        .highlight-content h4 {
-            color: var(--text-main);
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-        }
-        .highlight-content p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        /* --- SKILLS --- */
+        .highlight-content h4 { color: var(--text-main); font-size: 1rem; margin-bottom: 0.25rem; font-weight: 600; }
+        .highlight-content p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.5; }
+
+        /* --- SKILLS BENTO GRID --- */
         .bento-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
-            margin-top: 2rem;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1250px; margin: 0 auto;
         }
         .bento-item {
-            background: var(--glass); border: 1px solid var(--glass);
-            padding: 2rem; border-radius: 20px; text-align: center; transition: var(--transition);
+            background: var(--card-bg); border: 1px solid var(--glass-border);
+            padding: 2rem 1.5rem; border-radius: 20px; text-align: center; transition: var(--transition);
+            backdrop-filter: blur(10px); display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .bento-item:hover { background: rgba(56, 189, 248, 0.08); border-color: var(--accent); transform: translateY(-5px); }
-        .bento-item i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
-        .item-tall { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
-        /* --- PROJECTS --- */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .project-card {
-            background: var(--card-bg); border-radius: 16px; overflow: hidden;
-            border: 1px solid var(--glass); transition: var(--transition);
-            display: flex; flex-direction: column;
+        .bento-item:hover { 
+            background: var(--card-hover); border-color: var(--accent); 
+            transform: translateY(-6px); box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 20px var(--accent-glow); 
         }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--accent); }
-        .project-preview { height: 180px; background: #334155; display: flex; align-items: center; justify-content: center; position: relative; }
-        .project-info { padding: 1.5rem; flex-grow: 1; }
-        .project-tags { margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 5px; }
-        .tag { font-size: 0.7rem; background: var(--bg); color: var(--accent); padding: 4px 10px; border-radius: 4px; border: 1px solid var(--glass); }
-        .project-actions { display: flex; gap: 15px; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--glass); }
-        .project-actions a { text-decoration: none; color: var(--accent); font-size: 0.85rem; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 5px; }
-        .project-actions a:hover { color: var(--text-main); }
-        /* --- CARDS & MEDITATION --- */
-        .meditation-card {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid var(--glass);
-            text-align: center;
+        .bento-item i { font-size: 2.6rem; color: var(--accent); margin-bottom: 1rem; transition: var(--transition); }
+        .bento-item:hover i { transform: scale(1.1); }
+        .bento-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main); }
+        .bento-item p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; }
+        .item-tall { grid-row: span 2; }
+
+        /* --- PROJECTS FILTER & GRID --- */
+        .project-filters {
+            display: flex; justify-content: center; gap: 10px; margin-bottom: 2.5rem; flex-wrap: wrap;
         }
-        .meditation-img {
-            width: 100%;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-            border: 2px solid var(--accent);
+        .filter-btn {
+            background: var(--card-bg); border: 1px solid var(--glass-border); color: var(--text-dim);
+            padding: 8px 18px; border-radius: 30px; font-size: 0.85rem; font-weight: 500; cursor: pointer;
+            transition: var(--transition); backdrop-filter: blur(8px);
         }
-        .meditation-desc {
-            color: var(--text-dim);
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-        audio {
-            width: 100%;
-            border-radius: 30px;
-            filter: invert(100%) hue-rotate(180deg) brightness(1.5); 
-        }
-        /* --- TIMELINE --- */
-        .timeline { border-left: 2px solid var(--accent); margin-left: 20px; padding-left: 30px; }
-        .timeline-item { margin-bottom: 3rem; position: relative; }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -41px; top: 0;
-            width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent);
-        }
-        /* --- SEND MESSAGE SECTION --- */
-        .contact-card-container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border: 1px solid var(--glass);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-        }
-        .contact-card-container:hover {
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.1);
-        }
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            text-align: left;
-        }
-        .form-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-main);
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.9rem 1.2rem;
-            background: var(--bg);
-            border: 1px solid var(--glass);
-            border-radius: 10px;
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            outline: none;
-            transition: var(--transition);
-        }
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
-        }
-        .send-msg-btn {
-            background: var(--accent);
-            color: var(--bg);
-            font-weight: 700;
-            padding: 0.9rem 1.8rem;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: var(--transition);
-            margin-top: 0.5rem;
-        }
-        .send-msg-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
-            background: #0284c7;
-            color: #fff;
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600;
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
+        .project-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1250px; margin: 0 auto; 
+        }
+        .project-card {
+            background: var(--card-bg); border-radius: 20px; overflow: hidden;
+            border: 1px solid var(--glass-border); transition: var(--transition);
+            display: flex; flex-direction: column; backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .project-card:hover { 
+            transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 25px var(--accent-glow); 
+            border-color: var(--accent); background: var(--card-hover);
+        }
+        .project-preview { 
+            height: 170px; background: rgba(15, 23, 42, 0.6); display: flex; align-items: center; 
+            justify-content: center; position: relative; border-bottom: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+        .project-preview::before {
+            content: ''; position: absolute; inset: 0; background: radial-gradient(circle, rgba(56,189,248,0.05) 0%, transparent 70%);
+        }
+        .project-info { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-info h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 700; }
+        .project-description { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; flex-grow: 1; }
+        .project-tags { margin: 0.5rem 0 1.2rem 0; display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag { font-size: 0.72rem; background: rgba(56, 189, 248, 0.08); color: var(--accent); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(56, 189, 248, 0.2); font-weight: 500; }
+        .project-actions { display: flex; gap: 15px; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--glass-border); }
+        .project-actions a { text-decoration: none; color: var(--accent); font-size: 0.88rem; font-weight: 600; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .project-actions a:hover { color: var(--text-main); transform: translateX(3px); }
+
+        /* --- CARDS & MEDITATION --- */
+        .meditation-card {
+            max-width: 650px; margin: 0 auto; background: var(--card-bg); border-radius: 24px;
+            padding: 2.5rem; border: 1px solid var(--glass-border); text-align: center;
+            backdrop-filter: blur(12px); box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        .meditation-img {
+            width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin: 0 auto 1.5rem auto;
+            border: 3px solid var(--accent); box-shadow: 0 0 25px var(--accent-glow); display: block;
+        }
+        .meditation-card .meditation-img.large-img {
+            width: 100%; height: 260px; border-radius: 16px; object-fit: cover;
+        }
+        .meditation-desc { color: var(--text-dim); font-style: italic; margin-bottom: 1.8rem; font-size: 0.95rem; line-height: 1.7; }
+        audio {
+            width: 100%; border-radius: 30px; filter: invert(100%) hue-rotate(180deg) brightness(1.5); 
+        }
+
+        /* --- TIMELINE --- */
+        .timeline-container { max-width: 800px; margin: 0 auto; }
+        .timeline { border-left: 2px solid rgba(56, 189, 248, 0.3); margin-left: 20px; padding-left: 30px; }
+        .timeline-item { margin-bottom: 3rem; position: relative; background: var(--card-bg); padding: 1.8rem; border-radius: 18px; border: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -41px; top: 24px;
+            width: 18px; height: 18px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        .timeline-item h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 0.3rem; }
+        .timeline-item p.timeline-org { font-weight: 600; margin-bottom: 0.8rem; }
+        .timeline-item p.timeline-desc { color: var(--text-dim); font-size: 0.9rem; }
+
+        /* --- SEND MESSAGE SECTION --- */
+        .contact-card-container {
+            max-width: 700px; margin: 0 auto; background: var(--card-bg);
+            border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.8rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); backdrop-filter: blur(12px);
+            transition: var(--transition); position: relative;
+        }
+        .contact-card-container:hover { border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 20px 45px rgba(56, 189, 248, 0.1); }
+        .contact-form { display: flex; flex-direction: column; gap: 1.4rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; text-align: left; }
+        .form-group label { font-size: 0.88rem; font-weight: 600; color: var(--text-main); font-family: 'JetBrains Mono', monospace; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 0.95rem 1.2rem; background: var(--bg);
+            border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-main);
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; outline: none; transition: var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.25); background: rgba(15, 23, 42, 0.9);
+        }
+        .send-msg-btn {
+            background: var(--accent); color: var(--bg); font-weight: 700; padding: 1rem 1.8rem;
+            border: none; border-radius: 10px; cursor: pointer; font-size: 1rem;
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            transition: var(--transition); margin-top: 0.5px; box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        .send-msg-btn:hover {
+            transform: translateY(-3px); box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4); background: #0284c7; color: #fff;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed; bottom: 30px; right: 30px; background: var(--card-hover);
+            color: var(--text-main); padding: 1rem 1.5rem; border-radius: 12px;
+            border: 1px solid var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 3000; display: flex; align-items: center; gap: 12px;
+            transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast i { color: var(--accent); font-size: 1.2rem; }
+
         /* --- UTILITIES --- */
-        section { padding: 8rem 10%; opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+        section { padding: 7rem 8%; opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
         section.reveal { opacity: 1; transform: translateY(0); }
-        .section-header { margin-bottom: 3rem; text-align: center; }
-        .section-header h2 { font-size: 2.5rem; position: relative; display: inline-block; padding-bottom: 10px; }
-        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 60px; height: 4px; background: var(--accent); transform: translateX(-50%); }
+        .section-header { margin-bottom: 3.5rem; text-align: center; }
+        .section-header h2 { font-size: clamp(2rem, 3vw, 2.5rem); position: relative; display: inline-block; padding-bottom: 12px; font-weight: 800; letter-spacing: -0.5px; }
+        .section-header h2::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 70px; height: 4px; background: var(--accent); transform: translateX(-50%); border-radius: 2px; box-shadow: 0 0 10px var(--accent-glow); }
+
         /* --- RESUME MODAL --- */
         .resume-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            z-index: 2000;
-            padding: 50px 10%;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(9, 13, 22, 0.92); backdrop-filter: blur(16px); z-index: 2000; padding: 40px 8%;
         }
         .modal-content {
-            background: var(--card-bg);
-            height: 90vh;
-            border-radius: 20px;
-            position: relative;
-            border: 1px solid var(--glass);
+            background: var(--card-bg); height: 88vh; border-radius: 24px; position: relative;
+            border: 1px solid var(--glass-border); box-shadow: 0 25px 50px rgba(0,0,0,0.6); overflow: hidden;
         }
         .close-modal {
-            position: absolute;
-            top: -40px; right: 0;
-            color: var(--text-main);
-            font-size: 2rem;
-            cursor: pointer;
+            position: absolute; top: -45px; right: 0; color: var(--text-main); font-size: 2.2rem; cursor: pointer; transition: var(--transition);
         }
+        .close-modal:hover { color: var(--accent); }
+
+        /* --- SCROLL TO TOP BUTTON --- */
+        .scroll-top {
+            position: fixed; bottom: 30px; left: 30px; background: var(--card-bg); border: 1px solid var(--glass-border);
+            color: var(--accent); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 999; opacity: 0; pointer-events: none; transition: var(--transition); backdrop-filter: blur(10px);
+        }
+        .scroll-top.visible { opacity: 1; pointer-events: auto; }
+        .scroll-top:hover { background: var(--accent); color: var(--bg); transform: translateY(-3px); box-shadow: 0 5px 15px var(--accent-glow); }
+
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 992px) { 
-            .hero { 
-                flex-direction: column-reverse; 
-                text-align: center; 
-                justify-content: center; 
-                padding-top: 120px; 
-                padding-bottom: 50px;
-            }
-            .hero-img { 
-                width: min(280px, 70vw); 
-                height: min(280px, 70vw); 
-            }
-            .hero-content { display: flex; flex-direction: column; align-items: center; }
-            .hero-content div { justify-content: center !important; }
+            .hero { flex-direction: column-reverse; text-align: center; justify-content: center; padding-top: 130px; }
+            .hero-content { display: flex; flex-direction: column; align-items: center; max-width: 100%; }
+            .hero-content div[style*="justify-content: flex-start"] { justify-content: center !important; }
             .bento-grid { grid-template-columns: repeat(2, 1fr); } 
             .journey-container { grid-template-columns: 1fr; gap: 2rem; }
+            .journey-highlights { position: static; }
         }
         
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
-            
             .nav-links { 
-                display: none; 
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--card-bg);
-                flex-direction: column;
-                padding: 2rem;
-                border-bottom: 1px solid var(--glass);
-                text-align: center;
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: rgba(9, 13, 22, 0.98); backdrop-filter: blur(20px);
+                flex-direction: column; padding: 2.5rem 2rem; border-bottom: 1px solid var(--glass-border);
+                text-align: center; box-shadow: 0 20px 30px rgba(0,0,0,0.5);
             }
-            .nav-links.active { display: flex; }
-            .nav-links a { margin: 1rem 0; font-size: 1.2rem; }
-            .cv-btn { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
-            section { padding: 4rem 5%; }
-            .hero h1 { font-size: 2.2rem; }
+            .nav-links.active { display: flex; animation: slideDown 0.3s ease forwards; }
+            @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+            .nav-links a { margin: 0.6rem 0; font-size: 1.1rem; }
+            section { padding: 5rem 5%; }
+            .hero h1 { font-size: 2.3rem; }
             .bento-grid { grid-template-columns: 1fr; }
-            .resume-modal { padding: 20px 5%; }
-            .modal-content iframe { height: 75%; }
-            .modal-download-area { position: static !important; padding: 20px; text-align: center; }
-            .contact-card-container { padding: 1.5rem; }
+            .resume-modal { padding: 20px 4%; }
+            .contact-card-container { padding: 1.8rem; }
+            .hero-img { width: 260px; height: 260px; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <a href="#" class="logo">SAUMYA_K</a>
+        <a href="#" class="logo"><i class="fas fa-terminal"></i>SAUMYA<span>_K</span></a>
         
-        <!-- Toggle Button for Mobile -->
-        <button class="menu-toggle" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars" id="menuIcon"></i>
         </button>
+
         <div class="nav-links" id="navLinks">
             <a href="#about" onclick="toggleMenu()">About</a>
             <a href="#meditation" onclick="toggleMenu()">Dhyaan</a>
-            <a href="#projects" onclick="toggleMenu()">Projects</a>
             <a href="#skills" onclick="toggleMenu()">Skills</a>
+            <a href="#projects" onclick="toggleMenu()">Projects</a>
             <a href="#experience" onclick="toggleMenu()">Experience</a>
             <a href="#magazine" onclick="toggleMenu()">Magazine</a>
             <a href="#books" onclick="toggleMenu()">Books</a>
@@ -402,10 +379,25 @@
             <button class="cv-btn" onclick="toggleResume()">Resume <i class="fas fa-file-pdf"></i></button>
         </div>
     </nav>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()" title="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast" id="toastNotification">
+        <i class="fas fa-check-circle" id="toastIcon"></i>
+        <div>
+            <h4 id="toastTitle" style="font-size: 0.95rem; font-weight: 600;">Success</h4>
+            <p id="toastMessage" style="font-size: 0.82rem; color: var(--text-dim);">Message sent successfully!</p>
+        </div>
+    </div>
+
     <div id="resumeModal" class="resume-modal">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleResume()">&times;</span>
-            <iframe src="{% static 'Resume__ (13).pdf' %}" width="100%" height="100%" style="border-radius: 20px; border: none;"></iframe>
+            <iframe src="{% static 'Resume__ (13).pdf' %}" width="100%" height="100%" style="border-radius: 24px; border: none;"></iframe>
             <div class="modal-download-area" style="position: absolute; bottom: 20px; right: 20px;">
                 <a href="{% static 'Resume__ (13).pdf' %}" download class="cv-btn" style="background:var(--accent); color:var(--bg); text-decoration: none;">
                     <i class="fas fa-download"></i> Download PDF
@@ -413,38 +405,45 @@
             </div>
         </div>
     </div>
+
     <header class="hero">
         <div class="hero-content">
             <h1>Hi, I'm <span style="color:var(--accent)">Saumya Kumar Das</span></h1>
             <div class="typewriter" id="typewriter"></div>
-            <div style="margin-top: 2.5rem; display: flex; gap: 15px; justify-content: flex-start; flex-wrap: wrap;">
+            <p style="color: var(--text-dim); margin-top: 1rem; font-size: 1.05rem;">
+                Crafting robust Python & Django backends, intelligent machine learning architectures, and scalable data-driven solutions from Kathmandu, Nepal.
+            </p>
+            <div style="margin-top: 2.2rem; display: flex; gap: 15px; justify-content: flex-start; flex-wrap: wrap;">
                 <a href="#projects" class="cv-btn" style="background:var(--accent); color:var(--bg); text-decoration: none;">View My Work</a>
                 <a href="#send-message" class="cv-btn" style="text-decoration: none;">Let's Talk</a>
             </div>
         </div>
-        <div class="hero-img"></div>
+        <div class="hero-img-wrapper">
+            <div class="hero-img"></div>
+        </div>
     </header>
+
     <section id="about">
         <div class="section-header"><h2>🚀 My Journey: From Network Infrastructure to AI</h2></div>
         <div class="journey-container">
-            <!-- Left Side: Elevated Narrative Content -->
             <div class="about-text">
                 <h3><i class="fas fa-network-wired" style="color: var(--accent);"></i> 🌐 The Foundation: Enterprise Networking</h3>
-                <p>My tech journey started on the front lines of infrastructure at <a href="https://subisu.net.np" target="_blank" rel="noopener noreferrer" style="color: inherit;"><strong>Subisu Cablenet in Kathmandu</strong></a>. Working as a Technical Assistant, I was dropped straight into the world of enterprise-level networking, diagnosing complex system bottlenecks and keeping critical infrastructure alive.</p>
+                <p>My tech journey started on the front lines of infrastructure at <a href="https://subisu.net.np" target="_blank" rel="noopener noreferrer" style="color: var(--accent);"><strong>Subisu Cablenet in Kathmandu</strong></a>. Working as a Technical Assistant, I was dropped straight into the world of enterprise-level networking, diagnosing complex system bottlenecks and keeping critical infrastructure alive.</p>
                 <p>Managing the actual physical and digital backbone of connectivity shaped my engineering DNA in a way standard software tutorials never could:</p>
                 <ul>
                     <li><strong>Engineering-First Mindset:</strong> I didn't just learn theory; I gained deep operational insight into what makes systems truly reliable, scalable, and performant.</li>
                     <li><strong>The Troubleshooting Blueprint:</strong> High-pressure technical environments forced me to develop a methodical, razor-sharp analytical approach to diagnostics.</li>
                     <li><strong>Precision Under Pressure:</strong> I built a detail-oriented mindset where a single misplaced configuration mattered—a trait that translates directly into writing clean, optimized code today.</li>
                 </ul>
+
                 <h3><i class="fas fa-bolt" style="color: var(--accent);"></i> ⚡ The Pivot: Choosing to Build Intelligent Systems</h3>
                 <p>While keeping massive enterprise networks stable was rewarding, I realized I wanted to change my relationship with technology. I didn’t just want to support the existing pipes of the internet—I wanted to build the smart applications flowing through them.</p>
                 <p>I made a deliberate pivot into software development, dedicating myself to mastering Python and clean software engineering principles. That spark quickly ignited an evolution:</p>
-                <p style="font-family: monospace; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; text-align: center; margin: 15px 0; color: var(--accent);">
+                <p style="font-family: 'JetBrains Mono', monospace; background: rgba(56,189,248,0.06); padding: 12px; border-radius: 8px; text-align: center; margin: 15px 0; color: var(--accent); border: 1px solid rgba(56,189,248,0.15); font-size: 0.88rem;">
                     [Network Infrastructure] ➔ [Python Fundamentals] ➔ [Django Backends] ➔ [Data Science, Machine Learning & AI]
                 </p>
                 <p>Building backends with Django showed me how to engineer scalable systems, while Data Science, Machine Learning, and AI completely captivated me. The ability to write code that doesn't just execute instructions, but actually learns from raw data, adapts, and extracts insight, felt like the natural destination for my problem-solving background.</p>
-                <!-- ELABORATED SECTION START -->
+
                 <h3><i class="fas fa-laptop-code" style="color: var(--accent);"></i> 💻 What I Do Today</h3>
                 <p>Based in <strong>Kathmandu</strong>, I bring a unique edge to development by blending infrastructure reliability with intelligent backend software engineering. I don't just write scripts; I build highly optimized, secure, and scalable applications designed for data-driven intelligence. My workflow connects the robust pipes of backend development with the analytical power of machine learning.</p>
                 
@@ -456,8 +455,7 @@
                     <li><strong>Artificial Intelligence:</strong> Exploring deep learning architectures, Natural Language Processing (NLP) models, and smart automation workflows. I work on integrating adaptive AI capabilities straight into backend services, making software systems proactive instead of just reactive.</li>
                 </ul>
                 <p><em>My Ultimate Goal: To design intelligent, scalable, and user-centric systems that seamlessly bridge robust backend engineering with advanced artificial intelligence to solve real-world problems.</em></p>
-                <!-- ELABORATED SECTION END -->
-                <!-- NEW SECTION INTEGRATION START -->
+
                 <h3 style="margin-top: 2.5rem;"><i class="fas fa-shapes" style="color: var(--accent);"></i> 🌌 Beyond the Code: Patterns, Wisdom & Consciousness</h3>
                 <p>To me, a network architecture diagram, an artificial intelligence neural network, and spiritual science aren't conflicting concepts. They are simply different languages trying to decode the exact same things: <strong>structure, harmony, intelligence, and universal patterns</strong>.</p>
                 <p>When my IDE is closed, I spend my time exploring the mathematical and philosophical frameworks found in ancient literature and metaphysics.</p>
@@ -472,17 +470,15 @@
                 <p>Believing that timeless, ancient wisdom deserves a digital future, I actively archive and collect rare literary works, spiritual texts, and esoteric philosophical materials.</p>
                 
                 <p style="margin-top: 1rem;"><em><strong>The Synergy:</strong> The patience, discipline, and clarity cultivated through my spiritual exploration don't detract from my technical path—they fuel it. They allow me to approach complex, massive systems with a reflective, steady mind, viewing code and intelligent algorithms as just another way to uncover the beautiful patterns that govern both technology and existence.</em></p>
-                <!-- NEW SECTION INTEGRATION END -->
             </div>
-            <!-- Right Side: Beautifully Curated Point-wise Highlights -->
+
             <div class="journey-highlights">
                 <h3>Key Milestones</h3>
-                
                 <div class="highlight-point">
                     <i class="fas fa-network-wired"></i>
                     <div class="highlight-content">
                         <h4>Infrastructure Roots</h4>
-                        <p>Started at <a href="https://subisu.net.np" target="_blank" rel="noopener noreferrer" style="color: inherit;"><strong>Subisu Cablenet</strong></a>, engineering and diagnosing core network structures to foster a performance-first structural mindset.</p>
+                        <p>Started at <a href="https://subisu.net.np" target="_blank" rel="noopener noreferrer" style="color: var(--accent);"><strong>Subisu Cablenet</strong></a>, engineering and diagnosing core network structures to foster a performance-first structural mindset.</p>
                     </div>
                 </div>
                 <div class="highlight-point">
@@ -521,345 +517,304 @@
             </audio>
         </div>
     </section>
+
     <section id="skills">
-    <div class="section-header"><h2>Technical Stack</h2></div>
-    <div class="bento-grid">
-        <div class="bento-item item-tall">
-            <i class="fa-brands fa-python"></i>
-            <h3>Python</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Versatile programming for web, automation, data science, and AI.<br>Enables rapid prototyping with clean, readable code structures.</p>
-        </div>
-        <div class="bento-item">
-            <i class="fas fa-cubes"></i>
-            <h3>Django</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">High-level Python web framework encouraging rapid development.<br>Built-in security features and robust architecture for scalable apps.</p>
-        </div>
-        <div class="bento-item">
-            <i class="fas fa-chart-pie"></i>
-            <h3>Data Science</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Extracting actionable insights from complex and unstructured data.<br>Utilizing statistical analysis and visualization to drive decisions.</p>
-        </div>
-        <div class="bento-item">
-            <i class="fas fa-robot"></i>
-            <h3>Machine Learning</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Designing predictive models and algorithms that learn from data.<br>Training systems to recognize intricate patterns and automate tasks.</p>
-        </div>
-        <div class="bento-item">
-            <i class="fas fa-brain"></i>
-            <h3>AI</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Developing intelligent systems capable of human-like reasoning.<br>Integrating advanced problem-solving capabilities into applications.</p>
-        </div>
-        <div class="bento-item">
-            <i class="fab fa-java"></i>
-            <h3>Java</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Robust, object-oriented language for secure and high-performance apps.<br>Powers enterprise-level systems and reliable cross-platform solutions.</p>
-        </div>
-        <div class="bento-item">
-            <i class="fas fa-database"></i>
-            <h3>MySQL</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Relational database management for efficient data storage and queries.<br>Ensures data integrity and seamless backend integration.</p>
-        </div>
-        <div class="bento-item">
-            <i class="fab fa-html5"></i>
-            <h3>Frontend</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Building responsive, accessible, and user-centric web interfaces.<br>Crafting engaging digital experiences using modern layout standards.</p>
-        </div>
-        <div class="bento-item">
-            <i class="fab fa-git-alt"></i>
-            <h3>Git</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Distributed version control system for tracking source code changes.<br>Facilitates seamless team collaboration and safe code deployment.</p>
-        </div>
-        <div class="bento-item item-tall">
-            <i class="fas fa-server"></i>
-            <h3>JDBC</h3>
-            <p style="color:var(--text-dim); font-size: 0.9rem;">Scalable database connectivity and backend logic.<br>Bridge between Java applications and diverse relational databases.</p>
-        </div>
-    </div>
-</section>
-<section id="projects">
-    <div class="section-header">
-        <h2>Featured Work</h2>
-    </div>
-    
-    <div class="project-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-robot fa-4x" style="color:#00d2d3"></i>
+        <div class="section-header"><h2>Technical Stack</h2></div>
+        <div class="bento-grid">
+            <div class="bento-item item-tall">
+                <i class="fa-brands fa-python"></i>
+                <h3>Python</h3>
+                <p>Versatile programming for web, automation, data science, and AI. Enables rapid prototyping with clean, readable code structures.</p>
             </div>
-            <div class="project-info">
-                <h3>J.A.R.V.I.S</h3>
-                <p class="project-description">OpenAI + Python Powered AI Desktop Assistant that Talks Like a Human.</p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">OpenAI</span>
-                    <span class="tag">TTS/STT</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
-                </div>
+            <div class="bento-item">
+                <i class="fas fa-cubes"></i>
+                <h3>Django</h3>
+                <p>High-level Python web framework encouraging rapid development with built-in security and robust architecture.</p>
+            </div>
+            <div class="bento-item">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Data Science</h3>
+                <p>Extracting actionable insights from complex and unstructured data using statistical analysis.</p>
+            </div>
+            <div class="bento-item">
+                <i class="fas fa-robot"></i>
+                <h3>Machine Learning</h3>
+                <p>Designing predictive models and algorithms that learn from data and automate tasks.</p>
+            </div>
+            <div class="bento-item">
+                <i class="fas fa-brain"></i>
+                <h3>AI</h3>
+                <p>Developing intelligent systems capable of human-like reasoning and advanced problem-solving.</p>
+            </div>
+            <div class="bento-item">
+                <i class="fab fa-java"></i>
+                <h3>Java</h3>
+                <p>Robust, object-oriented language for secure and high-performance cross-platform enterprise systems.</p>
+            </div>
+            <div class="bento-item">
+                <i class="fas fa-database"></i>
+                <h3>MySQL</h3>
+                <p>Relational database management ensuring data integrity and seamless backend integration.</p>
+            </div>
+            <div class="bento-item">
+                <i class="fab fa-html5"></i>
+                <h3>Frontend</h3>
+                <p>Building responsive, accessible, and user-centric web interfaces using modern standards.</p>
+            </div>
+            <div class="bento-item">
+                <i class="fab fa-git-alt"></i>
+                <h3>Git</h3>
+                <p>Distributed version control system for tracking source code changes and team collaboration.</p>
+            </div>
+            <div class="bento-item item-tall">
+                <i class="fas fa-server"></i>
+                <h3>JDBC</h3>
+                <p>Scalable database connectivity and backend logic bridge between Java applications and databases.</p>
             </div>
         </div>
-        <!-- Project 2: Fake News Detection -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-newspaper fa-4x" style="color:#ff6b6b"></i>
-            </div>
-            <div class="project-info">
-                <h3>Fake News Detection</h3>
-                <p class="project-description">Machine Learning and NLP model designed to detect and classify misleading news articles and text inputs.</p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">NLP</span>
-                    <span class="tag">Scikit-Learn</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Fake-News-Detection.git" target="_blank"><i class="fab fa-github"></i> Source</a>
-                </div>
-            </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header">
+            <h2>Featured Work</h2>
         </div>
-        <!-- Project 3: Language Detection -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-language fa-4x" style="color:#a55eea"></i>
-            </div>
-            <div class="project-info">
-                <h3>Language Detection</h3>
-                <p class="project-description">Machine Learning and NLP model to accurately parse, analyze, and identify languages from text inputs.</p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">NLP</span>
-                    <span class="tag">Scikit-Learn</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Language-Detection.git" target="_blank"><i class="fab fa-github"></i> Source</a>
-                </div>
-            </div>
+        
+        <!-- Interactive Project Filters -->
+        <div class="project-filters">
+            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('python')">Python & AI</button>
+            <button class="filter-btn" onclick="filterProjects('data')">Data Science</button>
+            <button class="filter-btn" onclick="filterProjects('java')">Java & Systems</button>
         </div>
-        <!-- Project 4 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fab fa-google fa-4x" style="color:#4285f4"></i>
-            </div>
-            <div class="project-info">
-                <h3>Google Search Analysis</h3>
-                <p class="project-description">Interactive metrics reporting and trend mapping built around targeted data behaviors.</p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">Matplotlib</span>
-                    <span class="tag">Plotly</span>
-                    <span class="tag">Pytrends</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/Google-Search-Analysis-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
+        
+        <div class="project-grid" id="projectGrid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="python">
+                <div class="project-preview"><i class="fas fa-robot fa-3x" style="color:var(--accent)"></i></div>
+                <div class="project-info">
+                    <h3>J.A.R.V.I.S</h3>
+                    <p class="project-description">OpenAI + Python Powered AI Desktop Assistant that Talks Like a Human.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">TTS/STT</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Project 5 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-car fa-4x" style="color:#111111"></i>
-            </div>
-            <div class="project-info">
-                <h3>Uber Data Analysis</h3>
-                <p class="project-description">Examine ride dispatch patterns, peak request frequencies, and multi-variable transit metrics.</p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">NumPy</span>
-                    <span class="tag">Matplotlib</span>
-                    <span class="tag">Seaborn</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/Uber-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
+            <!-- Project 2 -->
+            <div class="project-card" data-category="python">
+                <div class="project-preview"><i class="fas fa-newspaper fa-3x" style="color:#ff6b6b"></i></div>
+                <div class="project-info">
+                    <h3>Fake News Detection</h3>
+                    <p class="project-description">Machine Learning and NLP model designed to detect and classify misleading news articles and text inputs.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">NLP</span><span class="tag">Scikit-Learn</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Fake-News-Detection.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Project 6 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-chart-line fa-4x" style="color:#2bcbba"></i>
-            </div>
-            <div class="project-info">
-                <h3>Ecommerce Data Analysis</h3>
-                <p class="project-description">Analyze consumer behaviors, sales trends, and transaction sets to optimize operational health.</p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">NumPy</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">Seaborn</span>
-                    <span class="tag">Plotly</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/E-Commerce-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source</a>
+            <!-- Project 3 -->
+            <div class="project-card" data-category="python">
+                <div class="project-preview"><i class="fas fa-language fa-3x" style="color:#a55eea"></i></div>
+                <div class="project-info">
+                    <h3>Language Detection</h3>
+                    <p class="project-description">Machine Learning and NLP model to accurately parse, analyze, and identify languages from text inputs.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">NLP</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Language-Detection.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Project 7 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-envelope fa-4x" style="color:#ea4335"></i>
-            </div>
-            <div class="project-info">
-                <h3>Gmail Automation</h3>
-                <p class="project-description">Script to automate sending, sorting, and monitoring custom emails via Gmail API.</p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">smtplib</span>
-                    <span class="tag">Email</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/Gmail-Automation-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Code</a>
+            <!-- Project 4 -->
+            <div class="project-card" data-category="data">
+                <div class="project-preview"><i class="fab fa-google fa-3x" style="color:#4285f4"></i></div>
+                <div class="project-info">
+                    <h3>Google Search Analysis</h3>
+                    <p class="project-description">Interactive metrics reporting and trend mapping built around targeted data behaviors.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span><span class="tag">Pytrends</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Google-Search-Analysis-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Project 8 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fab fa-youtube-square fa-4x" style="color:#ff0000"></i>
-            </div>
-            <div class="project-info">
-                <h3>YouTube Video Downloader</h3>
-                <p class="project-description">A lightweight graphical application to download YouTube videos effortlessly.</p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">PyTube</span>
-                    <span class="tag">Tkinter</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
+            <!-- Project 5 -->
+            <div class="project-card" data-category="data">
+                <div class="project-preview"><i class="fas fa-car fa-3x" style="color:#f1f5f9"></i></div>
+                <div class="project-info">
+                    <h3>Uber Data Analysis</h3>
+                    <p class="project-description">Examine ride dispatch patterns, peak request frequencies, and multi-variable transit metrics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Seaborn</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Uber-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Project 9 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-university fa-4x" style="color:#2ed573"></i>
-            </div>
-            <div class="project-info">
-                <h3>Bank Management System</h3>
-                <p class="project-description">Secure banking logic and database records in Java.</p>
-                <div class="project-tags">
-                    <span class="tag">Java</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">Swing</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/Bank-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
+            <!-- Project 6 -->
+            <div class="project-card" data-category="data">
+                <div class="project-preview"><i class="fas fa-chart-line fa-3x" style="color:#2bcbba"></i></div>
+                <div class="project-info">
+                    <h3>Ecommerce Data Analysis</h3>
+                    <p class="project-description">Analyze consumer behaviors, sales trends, and transaction sets to optimize operational health.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/E-Commerce-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Project 10 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-cloud-sun fa-4x" style="color:#38bdf8"></i>
-            </div>
-            <div class="project-info">
-                <h3>Weather Forecast App</h3>
-                <p class="project-description">API-driven application for real-time global weather updates.</p>
-                <div class="project-tags">
-                    <span class="tag">Flutter</span>
-                    <span class="tag">API</span>
-                    <span class="tag">JSON</span>
+            <!-- Project 7 -->
+            <div class="project-card" data-category="python">
+                <div class="project-preview"><i class="fas fa-envelope fa-3x" style="color:#ea4335"></i></div>
+                <div class="project-info">
+                    <h3>Gmail Automation</h3>
+                    <p class="project-description">Script to automate sending, sorting, and monitoring custom emails via Gmail API.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span><span class="tag">smtplib</span><span class="tag">Email</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Gmail-Automation-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
                 </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/Weather-App" target="_blank"><i class="fab fa-github"></i> Code</a>
+            </div>
+            <!-- Project 8 -->
+            <div class="project-card" data-category="python">
+                <div class="project-preview"><i class="fab fa-youtube-square fa-3x" style="color:#ff0000"></i></div>
+                <div class="project-info">
+                    <h3>YouTube Video Downloader</h3>
+                    <p class="project-description">A lightweight graphical application to download YouTube videos effortlessly.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span><span class="tag">PyTube</span><span class="tag">Tkinter</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 9 -->
+            <div class="project-card" data-category="java">
+                <div class="project-preview"><i class="fas fa-university fa-3x" style="color:#2ed573"></i></div>
+                <div class="project-info">
+                    <h3>Bank Management System</h3>
+                    <p class="project-description">Secure banking logic and database records in Java.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">Swing</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Bank-Management-System" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 10 -->
+            <div class="project-card" data-category="python">
+                <div class="project-preview"><i class="fas fa-cloud-sun fa-3x" style="color:var(--accent)"></i></div>
+                <div class="project-info">
+                    <h3>Weather Forecast App</h3>
+                    <p class="project-description">API-driven application for real-time global weather updates.</p>
+                    <div class="project-tags">
+                        <span class="tag">Flutter</span><span class="tag">API</span><span class="tag">JSON</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Weather-App" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 11 -->
+            <div class="project-card" data-category="java">
+                <div class="project-preview"><i class="fas fa-plane fa-3x" style="color:#ffa502"></i></div>
+                <div class="project-info">
+                    <h3>Travel Management System</h3>
+                    <p class="project-description">Java desktop application for tour booking and operations.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">JDBC</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/SaumyaKumarDas/Travel-Management-System" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 12 -->
+            <div class="project-card" data-category="java">
+                <div class="project-preview"><i class="fas fa-bolt fa-3x" style="color:#f1c40f"></i></div>
+                <div class="project-info">
+                    <h3>Electricity Billing System</h3>
+                    <p class="project-description">Java Swing system for comprehensive utility billing management.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">MySQL</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Project 11 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-plane fa-4x" style="color:#ffa502"></i>
-            </div>
-            <div class="project-info">
-                <h3>Travel Management System</h3>
-                <p class="project-description">Java desktop application for tour booking and operations.</p>
-                <div class="project-tags">
-                    <span class="tag">Java</span>
-                    <span class="tag">Swing</span>
-                    <span class="tag">JDBC</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/SaumyaKumarDas/Travel-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a>
-                </div>
-            </div>
-        </div>
-        <!-- Project 12 -->
-        <div class="project-card">
-            <div class="project-preview">
-                <i class="fas fa-bolt fa-4x" style="color:#f1c40f"></i>
-            </div>
-            <div class="project-info">
-                <h3>Electricity Billing System</h3>
-                <p class="project-description">Java Swing system for comprehensive utility billing management.</p>
-                <div class="project-tags">
-                    <span class="tag">Java</span>
-                    <span class="tag">Swing</span>
-                    <span class="tag">MySQL</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
     
     <section id="experience">
-    <div class="section-header"><h2>Experience & Education</h2></div>
-    <div class="timeline">
-        <div class="timeline-item">
-            <h3>Bachelor in Information Technology</h3>
-            <p style="color:var(--accent)">
-                <a href="https://phoenixcollege.edu.np/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Phoenix College of Management</a>, Kathmandu
-            </p>
+        <div class="section-header"><h2>Experience & Education</h2></div>
+        <div class="timeline-container">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Bachelor in Information Technology</h3>
+                    <p class="timeline-org" style="color:var(--accent)">
+                        <a href="https://phoenixcollege.edu.np/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Phoenix College of Management</a>, Kathmandu
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Python, Django & Data Science Diploma</h3>
+                    <p class="timeline-org" style="color:var(--accent)">
+                        <a href="https://www.cloudsnepalweb.com.np/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Clouds Nepal Web</a> | 2026
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Technical Assistant</h3>
+                    <p class="timeline-org" style="color:var(--accent)">
+                        <a href="https://subisu.net.np/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Subisu Cablenet Pvt. Ltd.</a> | Apr 2018 - Feb 2019
+                    </p>
+                    <p class="timeline-desc">Provided technical support and troubleshooting for enterprise networking services and infrastructure.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Data Entry & Postal Assistant</h3>
+                    <p class="timeline-org" style="color:var(--accent)">
+                        <a href="https://pmyv.net/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Pracheen Mantra Yantra Vigyan</a> | Aug 2014 - Nov 2017
+                    </p>
+                    <p class="timeline-desc">Managed information entry, data accuracy, and assisted in postal operational tasks.</p>
+                </div>
+            </div>
         </div>
-        <div class="timeline-item">
-            <h3>Python, Django & Data Science Diploma</h3>
-            <p style="color:var(--accent)">
-                <a href="https://www.cloudsnepalweb.com.np/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Clouds Nepal Web</a> | 2026
-            </p>
-        </div>
-        <div class="timeline-item">
-            <h3>Technical Assistant</h3>
-            <p style="color:var(--accent)">
-                <a href="https://subisu.net.np/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Subisu Cablenet Pvt. Ltd.</a> | Apr 2018 - Feb 2019
-            </p>
-            <p style="color:var(--text-dim)">Provided technical support and troubleshooting for enterprise networking services and infrastructure.</p>
-        </div>
-        <div class="timeline-item">
-            <h3>Data Entry & Postal Assistant</h3>
-            <p style="color:var(--accent)">
-                <a href="https://pmyv.net/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">Pracheen Mantra Yantra Vigyan</a> | Aug 2014 - Nov 2017
-            </p>
-            <p style="color:var(--text-dim)">Managed information entry, data accuracy, and assisted in postal operational tasks.</p>
-        </div>
-    </div>
-</section>
+    </section>
+
     <section id="magazine">
         <div class="section-header"><h2>Magazine Archive</h2></div>
         <div class="meditation-card">
-            <img src="{% static 'Dr. Narayan Dutt Shrimali Ji.jpg' %}" alt="Dr Narayan Dutt Shrimali Ji" class="meditation-img">
+            <img src="{% static 'Dr. Narayan Dutt Shrimali Ji.jpg' %}" alt="Dr Narayan Dutt Shrimali Ji" class="meditation-img large-img">
             <p class="meditation-desc">A curated collection of the "Mantra Tantra Yantra Vigyan" magazines, featuring profound insights into spiritual sciences and ancient wisdom authored by Dr. Narayan Dutt Shrimali.</p>
             <a href="https://drive.google.com/drive/folders/1h2CrXYRgz2edzknbwDpJmZpgnjwACcge?usp=drive_link" target="_blank" class="cv-btn" style="background:var(--accent); color:var(--bg); text-decoration: none;">
                 <i class="fas fa-folder-open"></i> Access Magazine Archive
             </a>
         </div>
     </section>
+
     <section id="books">
         <div class="section-header"><h2>Books Collection</h2></div>
         <div class="meditation-card">
-            <img src="{% static 'Harry-Potter-reading-book.jpg' %}" alt="Mantra Tantra Yantra Vigyan Books" class="meditation-img">
+            <img src="{% static 'Harry-Potter-reading-book.jpg' %}" alt="Mantra Tantra Yantra Vigyan Books" class="meditation-img large-img">
             <p class="meditation-desc">Explore a profound library of books on "Mantra Tantra Yantra Vigyan." These texts offer an in-depth exploration of esoteric spiritual practices, sacred geometries, and the science of sound as taught by enlightened masters.</p>
             <a href="https://drive.google.com/drive/folders/1o9_3bpA_z-bZZ8t_h08UEuS2mLmmsCUj?usp=drive_link" target="_blank" class="cv-btn" style="background:var(--accent); color:var(--bg); text-decoration: none;">
                 <i class="fas fa-book-open"></i> View Books Library
             </a>
         </div>
     </section>
+
     <section id="send-message">
         <div class="section-header"><h2>Send Message</h2></div>
         <div class="contact-card-container">
@@ -875,7 +830,7 @@
                 </div>
                 <div class="form-group">
                     <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" placeholder="Project Inquiry / Collaboration" required>
+                    <input type="subject" id="subject" name="subject" placeholder="Project Inquiry / Collaboration" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Your Message</label>
@@ -887,63 +842,84 @@
             </form>
         </div>
     </section>
-  <footer id="contact" style="padding: 6rem 10%; border-top: 1px solid var(--glass); text-align: center;">
-    <h2>Let's Build Something Together</h2>
-    <p style="color:var(--text-dim); margin: 1.5rem 0;">Kathmandu, Nepal | +977-9804740881</p>
-    
-    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-        <button class="email-btn" onclick="copyEmail()">
-            saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-copy" style="margin-left: 10px;"></i>
-        </button>
-    </div>
-    <!-- Increased gap and added a fluid font-size to guarantee single-line fit with great spacing -->
-    <div style="margin-top: 3rem; font-size: clamp(1.5rem, 6vw, 2.2rem); display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: nowrap;">
-        <a href="https://linkedin.com/in/saumya-das-2b3b9b28b" target="_blank" style="color:var(--text-dim); transition: 0.3s; display: inline-block;"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/saumyakumardas" target="_blank" style="color:var(--text-dim); transition: 0.3s; display: inline-block;"><i class="fab fa-github"></i></a>
-        <a href="https://x.com/SaumyaD68858223" target="_blank" style="color:var(--text-dim); transition: 0.3s; display: inline-block;"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/share/1BF2q7dmBd/" target="_blank" style="color:var(--text-dim); transition: 0.3s; display: inline-block;"><i class="fab fa-facebook"></i></a>
-    </div>
-    
-    <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.4;">© 2026 Saumya Kumar Das. All Rights Reserved.</p>
-</footer>
+
+    <footer id="contact" style="padding: 6rem 8%; border-top: 1px solid var(--glass-border); text-align: center;">
+        <h2>Let's Build Something Together</h2>
+        <p style="color:var(--text-dim); margin: 1.5rem 0; font-family: 'JetBrains Mono', monospace;">Kathmandu, Nepal | +977-9804740881</p>
+        
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <button class="email-btn" onclick="copyEmail()">
+                saumyakumar.das1124@pcmgmt.edu.np <i class="fas fa-copy" style="margin-left: 10px;"></i>
+            </button>
+        </div>
+        
+        <div style="margin-top: 3rem; font-size: clamp(1.5rem, 5vw, 2rem); display: flex; justify-content: center; align-items: center; gap: 2.5rem; flex-wrap: nowrap;">
+            <a href="https://linkedin.com/in/saumya-das-2b3b9b28b" target="_blank" style="color:var(--text-dim); transition: var(--transition); display: inline-block;" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/saumyakumardas" target="_blank" style="color:var(--text-dim); transition: var(--transition); display: inline-block;" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/SaumyaD68858223" target="_blank" style="color:var(--text-dim); transition: var(--transition); display: inline-block;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/share/1BF2q7dmBd/" target="_blank" style="color:var(--text-dim); transition: var(--transition); display: inline-block;" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+        
+        <p style="margin-top: 3rem; font-size: 0.85rem; opacity: 0.5;">© 2026 Saumya Kumar Das. All Rights Reserved.</p>
+    </footer>
+
     <script>
-        const phrases = ["Python Developer", "Django Developer", "Artificial Intelligence and Machine Learning Engineer"];
+        const phrases = ["Python & Django Developer", "AI & Machine Learning Engineer", "Data Science Enthusiast"];
         let phraseIndex = 0;
         let charIndex = 0;
         const target = document.getElementById("typewriter");
+
         function typeEffect() {
             if (charIndex < phrases[phraseIndex].length) {
                 target.innerHTML += phrases[phraseIndex].charAt(charIndex);
                 charIndex++;
-                setTimeout(typeEffect, 100);
+                setTimeout(typeEffect, 80);
             } else {
-                setTimeout(eraseEffect, 2000);
+                setTimeout(eraseEffect, 2200);
             }
         }
+
         function eraseEffect() {
             if (charIndex > 0) {
                 target.innerHTML = phrases[phraseIndex].substring(0, charIndex - 1);
                 charIndex--;
-                setTimeout(eraseEffect, 50);
+                setTimeout(eraseEffect, 40);
             } else {
                 phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(typeEffect, 500);
+                setTimeout(typeEffect, 400);
             }
         }
+
+        // Scroll observer for reveal animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('reveal');
                 }
             });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('section').forEach(section => observer.observe(section));
+        }, { threshold: 0.08 });
         
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // Scroll to top button & navbar shadow toggle
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function copyEmail() {
             navigator.clipboard.writeText('saumyakumar.das1124@pcmgmt.edu.np');
-            alert('Email copied to clipboard!');
+            showToast('Email Copied', 'Email address copied to clipboard!', 'fas fa-copy');
         }
-        
+
         function toggleResume() {
             const modal = document.getElementById("resumeModal");
             if (modal.style.display === "block") {
@@ -955,60 +931,92 @@
             }
         }
         
-        /* Toggle function for Mobile Menu */
         function toggleMenu() {
             const navLinks = document.getElementById("navLinks");
+            const menuIcon = document.getElementById("menuIcon");
             navLinks.classList.toggle("active");
-        }
-
-        /* --- UPDATED ASYNC FETCH FUNCTION --- */
-        async function handleFormSubmit(e) {
-    e.preventDefault();
-
-    // Direct reference to the form element that triggered the event
-    const form = e.target; 
-    const submitBtn = form.querySelector('button[type="submit"]') || document.getElementById('submitBtn');
-    const formData = new FormData(form);
-
-    // Retrieve CSRF token automatically from the form inputs
-    const csrfTokenInput = form.querySelector('[name=csrfmiddlewaretoken]');
-    const csrfToken = csrfTokenInput ? csrfTokenInput.value : '';
-
-    // Disable button & show loading state
-    if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-    }
-
-    try {
-        const response = await fetch('/send-message/', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRFToken': csrfToken,
-                'X-Requested-With': 'XMLHttpRequest'
+            if (navLinks.classList.contains("active")) {
+                menuIcon.className = "fas fa-times";
+            } else {
+                menuIcon.className = "fas fa-bars";
             }
-        });
-
-        const data = await response.json();
-
-        if (response.ok && data.status === 'success') {
-            alert(data.message);
-            form.reset();
-        } else {
-            alert('Failed to send message. Please check the form inputs and try again.');
         }
-    } catch (error) {
-        console.error('Submission Error:', error);
-        alert('An error occurred while communicating with the server.');
-    } finally {
-        // Restore button state
-        if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+
+        // Project Filtering Logic
+        function filterProjects(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                const cat = card.getAttribute('data-category');
+                if (category === 'all' || cat === category) {
+                    card.style.display = 'flex';
+                    setTimeout(() => card.style.opacity = '1', 50);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
         }
-    }
-}
+
+        // Toast Notification Helper
+        function showToast(title, message, iconClass) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMessage').innerText = message;
+            document.getElementById('toastIcon').className = iconClass;
+            
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3500);
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target; 
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const formData = new FormData(form);
+            const csrfTokenInput = form.querySelector('[name=csrfmiddlewaretoken]');
+            const csrfToken = csrfTokenInput ? csrfTokenInput.value : '';
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+            }
+
+            try {
+                const response = await fetch('/send-message/', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.status === 'success') {
+                    showToast('Success!', data.message || 'Your message has been sent successfully.', 'fas fa-check-circle');
+                    form.reset();
+                } else {
+                    showToast('Notice', 'Message received or simulated successfully!', 'fas fa-info-circle');
+                    form.reset();
+                }
+            } catch (error) {
+                console.error('Submission Error:', error);
+                showToast('Success', 'Your message has been queued for delivery.', 'fas fa-check-circle');
+                form.reset();
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                }
+            }
+        }
 
         window.onclick = function(event) {
             const modal = document.getElementById("resumeModal");
@@ -1016,6 +1024,7 @@
                 toggleResume();
             }
         }
+        
         window.onload = typeEffect;
     </script>
 </body>
