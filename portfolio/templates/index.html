@@ -549,189 +549,200 @@
     </section>
 
     <section id="projects">
-        <div class="section-header">
-            <h2>Featured Work</h2>
-        </div>
-        
-        <!-- Interactive Project Filters -->
-        <div class="project-filters">
-            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
-            <button class="filter-btn" onclick="filterProjects('python')">Python & AI</button>
-            <button class="filter-btn" onclick="filterProjects('data')">Data Science</button>
-            <button class="filter-btn" onclick="filterProjects('java')">Java & Systems</button>
-        </div>
-        
-        <div class="project-grid" id="projectGrid">
-            <!-- Project 1 -->
-            <div class="project-card" data-category="python">
-                <div class="project-preview"><i class="fas fa-robot fa-3x" style="color:var(--accent)"></i></div>
-                <div class="project-info">
-                    <h3>J.A.R.V.I.S</h3>
-                    <p class="project-description">OpenAI + Python Powered AI Desktop Assistant that Talks Like a Human.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">TTS/STT</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
+    <div class="section-header">
+        <h2>Featured Work</h2>
+    </div>
+    
+    <!-- Interactive Project Filters -->
+    <div class="project-filters">
+        <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+        <button class="filter-btn" onclick="filterProjects('python')">Python & AI</button>
+        <button class="filter-btn" onclick="filterProjects('data')">Data Science</button>
+        <button class="filter-btn" onclick="filterProjects('java')">Java & Systems</button>
+    </div>
+    
+    <div class="project-grid" id="projectGrid">
+        <!-- Project 1 -->
+        <div class="project-card" data-category="python">
+            <div class="project-preview"><i class="fas fa-robot fa-3x" style="color:var(--accent)"></i></div>
+            <div class="project-info">
+                <h3>J.A.R.V.I.S</h3>
+                <p class="project-description">OpenAI + Python Powered AI Desktop Assistant that Talks Like a Human.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">TTS/STT</span>
                 </div>
-            </div>
-            <!-- Project 2 -->
-            <div class="project-card" data-category="python">
-                <div class="project-preview"><i class="fas fa-newspaper fa-3x" style="color:#ef4444"></i></div>
-                <div class="project-info">
-                    <h3>Fake News Detection</h3>
-                    <p class="project-description">Machine Learning and NLP model designed to detect and classify misleading news articles and text inputs.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">NLP</span><span class="tag">Scikit-Learn</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Fake-News-Detection.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 3 -->
-            <div class="project-card" data-category="python">
-                <div class="project-preview"><i class="fas fa-language fa-3x" style="color:#8b5cf6"></i></div>
-                <div class="project-info">
-                    <h3>Language Detection</h3>
-                    <p class="project-description">Machine Learning and NLP model to accurately parse, analyze, and identify languages from text inputs.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">NLP</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Language-Detection.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 4 -->
-            <div class="project-card" data-category="data">
-                <div class="project-preview"><i class="fab fa-google fa-3x" style="color:#2563eb"></i></div>
-                <div class="project-info">
-                    <h3>Google Search Analysis</h3>
-                    <p class="project-description">Interactive metrics reporting and trend mapping built around targeted data behaviors.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span><span class="tag">Pytrends</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Google-Search-Analysis-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 5 -->
-            <div class="project-card" data-category="data">
-                <div class="project-preview"><i class="fas fa-car fa-3x" style="color:#0f172a"></i></div>
-                <div class="project-info">
-                    <h3>Uber Data Analysis</h3>
-                    <p class="project-description">Examine ride dispatch patterns, peak request frequencies, and multi-variable transit metrics.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Seaborn</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Uber-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 6 -->
-            <div class="project-card" data-category="data">
-                <div class="project-preview"><i class="fas fa-chart-line fa-3x" style="color:#0d9488"></i></div>
-                <div class="project-info">
-                    <h3>Ecommerce Data Analysis</h3>
-                    <p class="project-description">Analyze consumer behaviors, sales trends, and transaction sets to optimize operational health.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/E-Commerce-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 7 -->
-            <div class="project-card" data-category="python">
-                <div class="project-preview"><i class="fas fa-envelope fa-3x" style="color:#dc2626"></i></div>
-                <div class="project-info">
-                    <h3>Gmail Automation</h3>
-                    <p class="project-description">Script to automate sending, sorting, and monitoring custom emails via Gmail API.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span><span class="tag">smtplib</span><span class="tag">Email</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Gmail-Automation-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 8 -->
-            <div class="project-card" data-category="python">
-                <div class="project-preview"><i class="fab fa-youtube-square fa-3x" style="color:#dc2626"></i></div>
-                <div class="project-info">
-                    <h3>YouTube Video Downloader</h3>
-                    <p class="project-description">A lightweight graphical application to download YouTube videos effortlessly.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span><span class="tag">PyTube</span><span class="tag">Tkinter</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 9 -->
-            <div class="project-card" data-category="java">
-                <div class="project-preview"><i class="fas fa-university fa-3x" style="color:#16a34a"></i></div>
-                <div class="project-info">
-                    <h3>Bank Management System</h3>
-                    <p class="project-description">Secure banking logic and database records in Java.</p>
-                    <div class="project-tags">
-                        <span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">Swing</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Bank-Management-System" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 10 -->
-            <div class="project-card" data-category="python">
-                <div class="project-preview"><i class="fas fa-cloud-sun fa-3x" style="color:var(--accent)"></i></div>
-                <div class="project-info">
-                    <h3>Weather Forecast App</h3>
-                    <p class="project-description">API-driven application for real-time global weather updates.</p>
-                    <div class="project-tags">
-                        <span class="tag">Flutter</span><span class="tag">API</span><span class="tag">JSON</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Weather-App" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 11 -->
-            <div class="project-card" data-category="java">
-                <div class="project-preview"><i class="fas fa-plane fa-3x" style="color:#d97706"></i></div>
-                <div class="project-info">
-                    <h3>Travel Management System</h3>
-                    <p class="project-description">Java desktop application for tour booking and operations.</p>
-                    <div class="project-tags">
-                        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">JDBC</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/SaumyaKumarDas/Travel-Management-System" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 12 -->
-            <div class="project-card" data-category="java">
-                <div class="project-preview"><i class="fas fa-bolt fa-3x" style="color:#ca8a04"></i></div>
-                <div class="project-info">
-                    <h3>Electricity Billing System</h3>
-                    <p class="project-description">Java Swing system for comprehensive utility billing management.</p>
-                    <div class="project-tags">
-                        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">MySQL</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
-                    </div>
+                <div class="project-actions">
+                    <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Project 2 -->
+        <div class="project-card" data-category="python">
+            <div class="project-preview"><i class="fas fa-newspaper fa-3x" style="color:#ef4444"></i></div>
+            <div class="project-info">
+                <h3>Fake News Detection</h3>
+                <p class="project-description">Machine Learning and NLP model designed to detect and classify misleading news articles and text inputs.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">NLP</span><span class="tag">Scikit-Learn</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Fake-News-Detection.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card" data-category="python">
+            <div class="project-preview"><i class="fas fa-language fa-3x" style="color:#8b5cf6"></i></div>
+            <div class="project-info">
+                <h3>Language Detection</h3>
+                <p class="project-description">Machine Learning and NLP model to accurately parse, analyze, and identify languages from text inputs.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">NLP</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/Machine-Learning-And-NLP-Project-On-Language-Detection.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card" data-category="data">
+            <div class="project-preview"><i class="fab fa-google fa-3x" style="color:#2563eb"></i></div>
+            <div class="project-info">
+                <h3>Google Search Analysis</h3>
+                <p class="project-description">Interactive metrics reporting and trend mapping built around targeted data behaviors.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span><span class="tag">Pytrends</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/Google-Search-Analysis-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card" data-category="data">
+            <div class="project-preview"><i class="fas fa-car fa-3x" style="color:#0f172a"></i></div>
+            <div class="project-info">
+                <h3>Uber Data Analysis</h3>
+                <p class="project-description">Examine ride dispatch patterns, peak request frequencies, and multi-variable transit metrics.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Seaborn</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/Uber-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card" data-category="data">
+            <div class="project-preview"><i class="fas fa-chart-line fa-3x" style="color:#0d9488"></i></div>
+            <div class="project-info">
+                <h3>Ecommerce Data Analysis</h3>
+                <p class="project-description">Analyze consumer behaviors, sales trends, and transaction sets to optimize operational health.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/E-Commerce-Data-Analysis-With-Python.git" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="project-card" data-category="python">
+            <div class="project-preview"><i class="fas fa-envelope fa-3x" style="color:#dc2626"></i></div>
+            <div class="project-info">
+                <h3>Gmail Automation</h3>
+                <p class="project-description">Script to automate sending, sorting, and monitoring custom emails via Gmail API.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">smtplib</span><span class="tag">Email</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/Gmail-Automation-Using-Python.git" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 8 (Updated) -->
+        <div class="project-card" data-category="python">
+            <div class="project-preview"><i class="fas fa-laptop-code fa-3x" style="color:#092e20"></i></div>
+            <div class="project-info">
+                <h3>Full Stack Web Development</h3>
+                <p class="project-description">End-to-end web application developed using the Django framework, featuring database integration, secure authentication, and responsive UI.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span><span class="tag">Django</span><span class="tag">HTML/CSS</span><span class="tag">SQLite</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="project-card" data-category="java">
+            <div class="project-preview"><i class="fas fa-university fa-3x" style="color:#16a34a"></i></div>
+            <div class="project-info">
+                <h3>Bank Management System</h3>
+                <p class="project-description">Secure banking logic and database records in Java.</p>
+                <div class="project-tags">
+                    <span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">Swing</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/Bank-Management-System" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="project-card" data-category="python">
+            <div class="project-preview"><i class="fas fa-cloud-sun fa-3x" style="color:var(--accent)"></i></div>
+            <div class="project-info">
+                <h3>Weather Forecast App</h3>
+                <p class="project-description">API-driven application for real-time global weather updates.</p>
+                <div class="project-tags">
+                    <span class="tag">Flutter</span><span class="tag">API</span><span class="tag">JSON</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/Weather-App" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 11 -->
+        <div class="project-card" data-category="java">
+            <div class="project-preview"><i class="fas fa-plane fa-3x" style="color:#d97706"></i></div>
+            <div class="project-info">
+                <h3>Travel Management System</h3>
+                <p class="project-description">Java desktop application for tour booking and operations.</p>
+                <div class="project-tags">
+                    <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">JDBC</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/SaumyaKumarDas/Travel-Management-System" target="_blank"><i class="fab fa-github"></i> Source <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 12 -->
+        <div class="project-card" data-category="java">
+            <div class="project-preview"><i class="fas fa-bolt fa-3x" style="color:#ca8a04"></i></div>
+            <div class="project-info">
+                <h3>Electricity Billing System</h3>
+                <p class="project-description">Java Swing system for comprehensive utility billing management.</p>
+                <div class="project-tags">
+                    <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">MySQL</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/saumyakumardas" target="_blank"><i class="fab fa-github"></i> Code <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     
     <section id="experience">
         <div class="section-header"><h2>Experience & Education</h2></div>
