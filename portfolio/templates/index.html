@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,14 @@
     <meta property="og:description" content="Specializing in Python Backends, AI & ML, and Data Science Systems. View my latest projects.">
     <meta property="og:image" content="https://www.saumyadas.com.np/static/Saumya.jpg">
     <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+    
+    <!-- Instant theme loader to prevent flickering on reload -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -31,6 +39,72 @@
             --transition: all 0.2s ease-in-out;
         }
 
+        /* --- DARK BLUE THEME PALETTE --- */
+        [data-theme="dark"] {
+            --bg: #070d1e;
+            --card-bg: #0f1d3d;
+            --card-hover: #162852;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --border: #1e325c;
+            --border-light: #162544;
+        }
+
+        /* Dark Theme Element Overrides */
+        [data-theme="dark"] nav,
+        [data-theme="dark"] .hero,
+        [data-theme="dark"] footer,
+        [data-theme="dark"] .modal-content,
+        [data-theme="dark"] .email-btn,
+        [data-theme="dark"] .scroll-top,
+        [data-theme="dark"] .toast {
+            background-color: var(--card-bg) !important;
+        }
+        [data-theme="dark"] .nav-links {
+            background-color: var(--card-bg);
+        }
+        [data-theme="dark"] .project-preview {
+            background-color: #0b152d !important;
+        }
+        [data-theme="dark"] .form-group input,
+        [data-theme="dark"] .form-group textarea {
+            background-color: #081024 !important;
+        }
+        [data-theme="dark"] .form-group input:focus,
+        [data-theme="dark"] .form-group textarea:focus {
+            background-color: #0f1d3d !important;
+        }
+        [data-theme="dark"] .highlight-point i,
+        [data-theme="dark"] .tag {
+            background-color: rgba(59, 130, 246, 0.15) !important;
+            border-color: rgba(59, 130, 246, 0.3) !important;
+        }
+        [data-theme="dark"] .resume-modal {
+            background: rgba(7, 13, 30, 0.85);
+        }
+
+        /* --- THEME TOGGLE BUTTON --- */
+        .theme-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .theme-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
         /* --- CUSTOM SCROLLBAR --- */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
@@ -46,9 +120,10 @@
             line-height: 1.7;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION (EXACT ORIGINAL SIZING) --- */
         nav {
             position: fixed; top: 0; width: 100%; padding: 1.2rem 8%;
             background: #ffffff;
@@ -237,7 +312,6 @@
             max-width: 700px; margin: 0 auto; background: var(--card-bg);
             border: 2px solid var(--border); border-radius: 12px; padding: 2.8rem;
             box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
-            transition: var(--transition);
         }
         .contact-card-container:hover { border-color: var(--accent); }
         .contact-form { display: flex; flex-direction: column; gap: 1.4rem; }
@@ -349,7 +423,11 @@
             <a href="#books" onclick="toggleMenu()">Books</a>
             <a href="#send-message" onclick="toggleMenu()">Contact</a>
         </div>
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <!-- Theme Toggle Button -->
+            <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+                <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
             <button class="cv-btn" onclick="toggleResume()">Resume <i class="fas fa-file-pdf"></i></button>
         </div>
     </nav>
@@ -849,6 +927,33 @@
     </footer>
 
     <script>
+        // --- THEME TOGGLE LOGIC ---
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('portfolio-theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('themeIcon');
+            if (!icon) return;
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+                icon.style.color = '#f59e0b';
+            } else {
+                icon.className = 'fas fa-moon';
+                icon.style.color = 'var(--text-main)';
+            }
+        }
+
+        // Initialize button icon on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            updateThemeIcon(currentTheme);
+        });
+
         const phrases = ["Python & Django Developer", "AI & Machine Learning Engineer", "Data Science Enthusiast"];
         let phraseIndex = 0;
         let charIndex = 0;
